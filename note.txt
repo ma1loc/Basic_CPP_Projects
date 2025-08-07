@@ -1,0 +1,15 @@
+<< note is about my learning notes >>
+
+TODO: need to know {
+	what is a method?
+	what is a calss?
+	what is streams in cpp?
+	what is objects?
+	what is instance?
+}
+
+Namespace
+
+	we can:
+		create nested namespaces.
+		create namespace inside another one.
