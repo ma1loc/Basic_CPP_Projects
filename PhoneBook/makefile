@@ -1,8 +1,8 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
-NAME = program
-SRC = ./learning_syntax.cpp
+NAME = phone_book
+SRC = ./phone_book.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

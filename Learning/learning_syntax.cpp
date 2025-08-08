@@ -11,12 +11,12 @@ namespace	first_space
 
 	/*
 	>>> Not allowed in the namespace
+		int age;
 		age = 22
 	*/
-	int age;
 
 
-	age = 22;	
+	int age = 22;	
 	// >>> here i can create functions, variables, typedef...
 	void	sayHey()
 	{

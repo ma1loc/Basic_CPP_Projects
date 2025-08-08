@@ -6,6 +6,7 @@ TODO: need to know {
 	what is streams in cpp?
 	what is objects?
 	what is instance?
+	what is oop?
 }
 
 Namespace
@@ -13,3 +14,7 @@ Namespace
 	we can:
 		create nested namespaces.
 		create namespace inside another one.
+
+NeedToKnow:
+	#include <iostream>, #include <stdio.h> ?
+	Write a newline and flush the stream. (endl)?
