@@ -1,20 +1,27 @@
 << note is about my learning notes >>
 
 TODO: need to know {
+	what is Namespace?
+		create nested namespaces.
+		create namespace inside another one.
 	what is a method?
 	what is a calss?
 	what is streams in cpp?
 	what is objects?
 	what is instance?
 	what is oop?
-}
-
-Namespace
-
-	we can:
-		create nested namespaces.
-		create namespace inside another one.
-
-NeedToKnow:
 	#include <iostream>, #include <stdio.h> ?
 	Write a newline and flush the stream. (endl)?
+	oop, object, class, instance ?
+	what is constructor ?
+}
+
+NeedToKnow:
+	OOP → a way (paradigm) of writing code.
+	Object → an instance of a class (created from a class blueprint).
+	Class → defines the structure (fields/attributes) and behavior (methods/functions) that its objects will have.
+	function -> method
+	what is constructor
+about the phone_book project:
+	what is a class?
+
