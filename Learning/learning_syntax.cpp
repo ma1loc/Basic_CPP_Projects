@@ -9,11 +9,19 @@ namespace	first_space
 	using std::cout;	// cout is just a Linked to standard output?
 	using std::endl;	// but endl is a function?
 
+	/*
+	>>> Not allowed in the namespace
+		age = 22
+	*/
+	int age;
+
+
+	age = 22;	
 	// >>> here i can create functions, variables, typedef...
 	void	sayHey()
 	{
-		cout << "Hello Guys!!!" << endl;
-		exit(0);
+		// >>> '<<' an operator can get one argument at the time
+		cout << "Hello Guys!!! " << "i'm " << age << " years old" << endl;
 	}
 }
 
@@ -22,5 +30,6 @@ int	main()
 	// cout << "hello world!!!" << endl; error no access to the member of the namespace
 	// first_space::sayHey; why this have an error?
 	first_space::sayHey();
+	// first_space::sayHey();
 	return (0);
 }

@@ -1,6 +1,7 @@
 CPP = c++
+COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
-NAME = leaning
+NAME = program
 SRC = ./learning_syntax.cpp
 
 OBJ = $(SRC:.cpp=.o)
@@ -8,10 +9,10 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CPP) $(CPP_FLAGS) -o $(NAME) $(OBJ)
+	$(CPP) $(COMPILE_FLAG) $(CPP_FLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp
-	$(CPP) $(CPP_FLAGS) -c $< -o $@
+	$(CPP) $(COMPILE_FLAG) $(CPP_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
