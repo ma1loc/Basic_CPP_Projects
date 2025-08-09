@@ -14,14 +14,32 @@ TODO: need to know {
 	Write a newline and flush the stream. (endl)?
 	oop, object, class, instance ?
 	what is constructor ?
+	objects and instances same thing?
 }
 
 NeedToKnow:
+	function overloade (in the Cpp we can have function with same name with diffrent arg number)
+		Note: if function with no arg and just a change in the return -> error
 	OOP → a way (paradigm) of writing code.
 	Object → an instance of a class (created from a class blueprint).
 	Class → defines the structure (fields/attributes) and behavior (methods/functions) that its objects will have.
 	function -> method
 	what is constructor
+
 about the phone_book project:
 	what is a class?
 
+answers about cpp:
+	OOP is just a way to orgnize your program
+	In OOP, we create class tha is a blueprint, to create a object
+	the blueprint in the class have to main things:
+	functions -> called in the class methods
+	variables -> called in the class attributes
+	An object created from a class is called an instance of that class.
+
+what's new in C++:
+	OOP
+	String
+	Function Overloading
+	Ma1loc -> new
+	free -> delete
