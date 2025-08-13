@@ -15,6 +15,8 @@ TODO: need to know {
 	oop, object, class, instance ?
 	what is constructor ?
 	objects and instances same thing?
+	what is stream, ostream?
+	what is static/non-static class member?
 }
 
 NeedToKnow:
@@ -25,6 +27,14 @@ NeedToKnow:
 	Class → defines the structure (fields/attributes) and behavior (methods/functions) that its objects will have.
 	function -> method
 	what is constructor
+	get a member into the namespace instad of calling all the namespace
+	About the Cpp operator:
+		:: -> get access to the members of the namespace
+		.	-> get access to the members of the class
+	static and non-static:
+		to access into one of the member of the class have to make members static.
+		ex:
+			learning_syntax::Say_hello();
 
 about the phone_book project:
 	what is a class?
@@ -36,6 +46,11 @@ answers about cpp:
 	functions -> called in the class methods
 	variables -> called in the class attributes
 	An object created from a class is called an instance of that class.
+
+	stream:
+		Stream → the concept of ordered data flow.
+		pipeline that moves bytes from one place to another
+		Buffer → a storage area that helps the stream flow more efficiently.
 
 what's new in C++:
 	OOP

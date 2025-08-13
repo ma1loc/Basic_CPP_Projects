@@ -1,9 +1,6 @@
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
-void    set_upper_case(char *arg)
+void    set_upper_case(std::string arg)
 {
     int i;
 
@@ -14,7 +11,7 @@ void    set_upper_case(char *arg)
             arg[i] -= 32;
         i++;
     }
-    cout << arg;
+    std::cout << arg;
 }
 
 int main(int argc, char **argv)
@@ -22,7 +19,7 @@ int main(int argc, char **argv)
     int i;
 
     if (argc == 1)
-        cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     else
     {
         i = 1;
@@ -31,7 +28,7 @@ int main(int argc, char **argv)
             set_upper_case(argv[i]);
             i++;
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 
     return (0);
