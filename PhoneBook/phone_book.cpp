@@ -2,34 +2,21 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
-// {1,3,5,7,9}
-
-int secondMinimum(int arr[], int size)
+char *ft_strdup(string str)
 {
-    int secondmin = 2147483647;
-    int min = 2147483647;
-  
-    int i = 0;
-    while (i < size)
-    {
-        if (arr[i] < min)
-        {
-            secondmin = min;
-            min = arr[i];
-        }
-        if (arr[i] < secondmin && min != arr[i])
-            secondmin = arr[i];
-        i++;
-    }  
-  return secondmin;
+	int len;
+
+	len = str.length();
+	
 }
-int main()
+
+int	main()
 {
-    int arry[] = {3,5,7, 2, 9};
-    int sizeofarry = sizeof(arry) / sizeof(arry[0]);
+	string str = "hello world";
 
-    cout << secondMinimum(arry, sizeofarry);
+	cout << str.length() << endl;
 
-    return (0);
+	return (0);
 }
