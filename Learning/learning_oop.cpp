@@ -26,10 +26,18 @@
 class first_class
 {
 	// body is just for attributes
-	int i = 5;
+	// int i = 5;
 	
 	public:	// -> flag
 		first_class(){	// -> constructor is run auto we declare an object
-			std::cout << i << std::endl;
+			std::cout << 5 << std::endl;
 		}
 };
+
+int main()
+{
+	first_class hello;
+	std::cout << "hello" << std::endl;
+
+	return (0);
+}

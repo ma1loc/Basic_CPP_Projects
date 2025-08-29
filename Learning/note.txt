@@ -17,6 +17,7 @@ TODO: need to know {
 	objects and instances same thing?
 	what is stream, ostream?
 	what is static/non-static class member?
+	what is encapsulation?
 }
 
 NeedToKnow:
@@ -26,8 +27,6 @@ NeedToKnow:
 	Object → an instance of a class (created from a class blueprint).
 	Class → defines the structure (fields/attributes) and behavior (methods/functions) that its objects will have.
 	function -> method
-	what is constructor
-	get a member into the namespace instad of calling all the namespace
 	About the Cpp operator:
 		:: -> get access to the members of the namespace
 		.	-> get access to the members of the class
@@ -46,15 +45,52 @@ answers about cpp:
 	functions -> called in the class methods
 	variables -> called in the class attributes
 	An object created from a class is called an instance of that class.
-
+	
 	stream:
 		Stream → the concept of ordered data flow.
 		pipeline that moves bytes from one place to another
 		Buffer → a storage area that helps the stream flow more efficiently.
+	
+	about privet / public access:
+	
+	what is constructor:
+		about the constructor:
+		constructor is a function inside a class that have no return
+		it can be a constructor overloading
+		constructor is a function that run we creating an object
+			like; first_class test; -> you creating an object
+
+	what is destructor:
+		Named ~ClassName().
+		Job: clean up resources the object used (memory, files, etc.).
+		Does not delete the object itself; memory cleanup is automatic for stack objects or done via delete for heap objects.
+		Needed only if the class allocates memory/resources manually.
+		If no dynamic allocation, destructor is optional.
+		If you create an object inside main() (a stack object), its lifetime lasts until the end of main().
+		When main() finishes and the object goes out of scope, the destructor ~Contact() runs automatically.
+		This cleans up any resources the object used before the program ends.
 
 what's new in C++:
-	OOP
-	String
+	OOP (class)
+	set / get
+	std::String
 	Function Overloading
 	Ma1loc -> new
 	free -> delete
+	cout / cin
+
+	class Myclass
+	{
+		private;
+			std::string name;
+		public;
+			Myclass(); defualt --
+			Myclass(const std::string &name); --para constructor
+			Myclass(const Myclass &other); -- copy const
+			Myclass& operator=(const Myclass &other) -- copy assigment operator
+			~Myclass() -- des
+
+			void getrandom() const;
+	}
+
+
