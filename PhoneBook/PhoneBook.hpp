@@ -1,6 +1,13 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# define MAX_CONTACTS 8
+# define CONTACTS_LIMIT 8
+# define INDEX_MINI 0
+// # define INDEX_MINI "0"
+# define INDEX_MAX 7
+// # define INDEX_MAX "7"
+
+#include <iostream>
+#include <cstdlib>
 
 # endif

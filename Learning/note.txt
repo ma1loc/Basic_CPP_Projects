@@ -70,9 +70,15 @@ answers about cpp:
 		When main() finishes and the object goes out of scope, the destructor ~Contact() runs automatically.
 		This cleans up any resources the object used before the program ends.
 
+	check the cin fail:
+		std::cin.fail if is true most clear the Buffer
+		std::cin.clear() → erases the error flags of the Buffer
+		std::cin.ignore() → cin.ignore() → clears the leftover characters in the input buffer that would otherwise mess up the next read.
+
 what's new in C++:
 	OOP (class)
-	set / get
+	setter / getter
+	public / privet: access specifiers
 	std::String
 	Function Overloading
 	Ma1loc -> new
