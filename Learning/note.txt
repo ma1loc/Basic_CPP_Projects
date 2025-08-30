@@ -79,11 +79,12 @@ what's new in C++:
 	OOP (class)
 	setter / getter
 	public / privet: access specifiers
-	std::String
 	Function Overloading
 	Ma1loc -> new
 	free -> delete
-	cout / cin
+	std::String ->
+	cout / cin ->
+	>> / << ->
 
 	class Myclass
 	{

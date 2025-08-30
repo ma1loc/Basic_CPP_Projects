@@ -42,7 +42,7 @@ class Contact
 		void set_nickname(std::string nickname) {
 			this->nickname = nickname;
 		}
-		void set_phone_number(int phone_number) {
+		void set_phone_number(std::string phone_number) {
 			this->phone_number = phone_number;
 		}
 		void set_darkest_secret(std::string darkest_secret) {
@@ -68,6 +68,20 @@ class PhoneBook	// >>> collection of info.
 	}
 };
 
+int	is_digit(std::string phone_number)
+{
+	int i;
+
+	i = 0;
+	while (phone_number[i])
+	{
+		if (isdigit(phone_number[i]))
+			i++;
+		else
+			return (1);
+	}
+	return (0);
+}
 
 // >>> is not a global function
 //		way to define the methode outside the class
@@ -78,11 +92,11 @@ void PhoneBook::add_contact()
 	std::string first_name;
 	std::string last_name;
 	std::string nickname;
-	int 		phone_number;
+	std::string phone_number;
 	std::string darkest_secret;
 
-    std::cout << "----------------- ADD -----------------" << std::endl;
-	std::cout << "index -> " << index << std::endl;
+    // std::cout << "----------------- ADD -----------------" << std::endl;
+	// std::cout << "index -> " << index << std::endl;
 
 	std::cout << "first name: ";
 	std::cin >> first_name;
@@ -98,12 +112,8 @@ void PhoneBook::add_contact()
 	
 	std::cout << "phone number: ";
 	std::cin >>  phone_number;
-	if (std::cin.fail()) {
-		std::cin.clear();
-		std::cin.ignore();
-		std::cout << "error: invalid phone number" << std::endl;
-		return ;
-	}
+	if (is_digit(phone_number))
+		return (std::cout << "phone number is not valid" << std::endl, (void)0);
 	contacts[index].set_phone_number(phone_number);
 	
 	std::cout << "darkest secret: ";
@@ -116,47 +126,72 @@ void PhoneBook::add_contact()
 
 void PhoneBook::search()
 {
-    std::cout << "----------------- SEARCH -----------------" << std::endl;
+    // std::cout << "----------------- SEARCH -----------------" << std::endl;
 	
 	// >>> the counter in the phonebook is to know how many contacts is there
 	if (counter != 0)
 	{
-		std::cout << "     index|first name| last name|  nickname" << std::endl;
+		int i;
 		
-		int i = 0;
-		std::cout << i << "< " << index << std::endl;
+		i = 0;
+		std::cout << "     index|first name| last name|  nickname" << std::endl;
 		while (i < index)	// >>> shows all the contacts is there
 		{
-			std::cout << i << " | " << contacts[i].get_first_name()
-			<< " | " << contacts[i].get_last_name() << " | "
-			<< contacts[i].get_nickname() << std::endl;
+			std::cout << std::setw(10) << index << "|";
+			if (contacts[i].get_first_name().length() > COLUMN_WIDE)
+				std::cout << contacts[i].get_first_name().substr(0, 9) << '.' << "|";
+			else
+				std::cout << std::setw(10) << contacts[i].get_first_name() << "|";
+			
+			if (contacts[i].get_first_name().length() > COLUMN_WIDE)
+				std::cout << contacts[i].get_last_name().substr(0, 9) << '.' << "|";
+			else
+				std::cout << std::setw(10) << contacts[i].get_last_name() << "|";
+		
+			if (contacts[i].get_nickname().length() > COLUMN_WIDE)
+				std::cout << contacts[i].get_nickname().substr(0, 9) << '.' << std::endl;
+			else
+				std::cout << std::setw(10) << contacts[i].get_nickname() << std::endl;
 			i++;
 		}
-		
+
 		// >>> shows spicefic contact with more info by index of it
 		std::cout << "> Inter contact index: ";
 		std::cin >> index;	// TODO: overflow to check
-		if (std::cin.fail()) {
+		if (std::cin.fail() || index > INDEX_MAX || index < INDEX_MINI) {
+			// if (std::cin.fail()) {
+			std::cout << "-------------> inter <------------------------" << std::endl;
+			
+			// std::cin.clear();
+			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			
 			std::cin.clear();
 			std::cin.ignore();
-			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+			// }
 			std::cout << "error: invalid index range" << std::endl;
 			return ;
 		} 
-		else if (index > INDEX_MAX || index < INDEX_MINI)
-			std::cout << "error: input index is out of range limit" << std::endl;
+		// else if (index > INDEX_MAX || index < INDEX_MINI)
 		else {
 			if (index <= counter - 1) {
-				std::cout << "first name: " << contacts[index].get_first_name() << std::endl;
-				std::cout << "last name: " << contacts[index].get_last_name() << std::endl;
-				std::cout << "nickname: " << contacts[index].get_nickname() << std::endl;
-				std::cout << "phone number: " << contacts[index].get_phone_number() << std::endl;
-				std::cout << "darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
+				std::cout << "- first name: " << contacts[index].get_first_name() << std::endl;
+				std::cout << "- last name: " << contacts[index].get_last_name() << std::endl;
+				std::cout << "- nickname: " << contacts[index].get_nickname() << std::endl;
+				std::cout << "- phone number: " << contacts[index].get_phone_number() << std::endl;
+				std::cout << "- darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
 			} else
 				std::cout << "NOTE: index your looking for is not exist or not set yet" << std::endl;
 		}
 	}
+	else
+		std::cout << "NOTE: Phone book is empty for now" << std::endl;
 }
+
+// TODO: fix the index
+// TODO: fix the buffer input crash
+// TODO: fix the buffer overflow -> DONE
+// TODO: fix info input more them 10 char -> DONE
+// TODO: use the getline rather then std::cin
 
 
 int	main()

@@ -23,21 +23,29 @@
 */
 
 
-class first_class
-{
-	// body is just for attributes
-	// int i = 5;
+// class first_class
+// {
+// 	// body is just for attributes
+// 	// int i = 5;
 	
-	public:	// -> flag
-		first_class(){	// -> constructor is run auto we declare an object
-			std::cout << 5 << std::endl;
-		}
-};
+// 	public:	// -> flag
+// 		first_class(){	// -> constructor is run auto we declare an object
+// 			std::cout << 5 << std::endl;
+// 		}
+// };
+
+#include <iomanip>
 
 int main()
 {
-	first_class hello;
-	std::cout << "hello" << std::endl;
+	// first_class hello;
+	// std::cout << "hello" << std::endl;
+
+	std::cout << std::setw(10) << "hello" << "|" << std::endl;
+	std::cout << std::setw(10) << "helloooo" << "|" << std::endl;
+	std::cout << std::setw(10) << "world" << "|" << std::endl;
+	std::cout << std::setw(10) << "it's" << "|" << std::endl;
+	std::cout << std::setw(10) << "me" << "|" << std::endl;
 
 	return (0);
 }
