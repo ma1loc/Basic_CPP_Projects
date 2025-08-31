@@ -102,3 +102,16 @@ what's new in C++:
 	}
 
 
+to know about the C00
+	what is a class?
+	OOP (class)
+	setter / getter
+	public / privet: access specifiers
+	Function Overloading
+	Ma1loc -> new
+	free -> delete
+	std::String -> ?
+	cout / cin -> ?
+	>> / << -> ?
+	getline(input stream, buffer)
+	what is constractor && parametrise constractor?

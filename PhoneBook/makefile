@@ -2,7 +2,7 @@ CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
 NAME = PhoneBook
-SRC = ./PhoneBook.cpp
+SRC = ./phone_book.cpp ./class_definition.cpp ./phone_book_utils.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
