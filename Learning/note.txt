@@ -115,3 +115,5 @@ to know about the C00
 	>> / << -> ?
 	getline(input stream, buffer)
 	what is constractor && parametrise constractor?
+	instance variables?
+	static variables ?
