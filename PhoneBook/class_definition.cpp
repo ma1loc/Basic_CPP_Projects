@@ -1,6 +1,5 @@
 #include "phone_book.hpp"
 
-
 // >>> is not a global function
 //		way to define the methode outside the class
 //		set first the class name to define is not a global function
@@ -12,9 +11,6 @@ void PhoneBook::add_contact()
 	std::string nickname;
 	std::string phone_number;
 	std::string darkest_secret;
-
-	// if (index > CONTACTS_LIMIT - 1)
-	// 	index = index % CONTACTS_LIMIT;
 
 	std::cout << "first name: ";
 	std::getline(std::cin, first_name);
@@ -72,25 +68,20 @@ void PhoneBook::search()
 		while (i < counter)
 		{
 			std::cout << std::setw(WIDE) << i << "|";
-
-			// First name
 			if (contacts[i].get_first_name().length() > WIDE)
 				std::cout << contacts[i].get_first_name().substr(0, WIDE - 1) << '.' << "|";
 			else
 				std::cout << std::setw(WIDE) << contacts[i].get_first_name() << "|";
 
-			// Last name
 			if (contacts[i].get_last_name().length() > WIDE)
 				std::cout << contacts[i].get_last_name().substr(0, WIDE - 1) << '.' << "|";
 			else
 				std::cout << std::setw(WIDE) << contacts[i].get_last_name() << "|";
 
-			// Nickname
 			if (contacts[i].get_nickname().length() > WIDE)
 				std::cout << contacts[i].get_nickname().substr(0, WIDE - 1) << '.' << std::endl;
 			else
 				std::cout << std::setw(WIDE) << contacts[i].get_nickname() << std::endl;
-
 			i++;
 		}
 

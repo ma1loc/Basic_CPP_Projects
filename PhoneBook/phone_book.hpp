@@ -73,7 +73,6 @@ class PhoneBook // >>> collection of info.
 		int index;
 
 	public:
-		// add a contact
 		void add_contact(); // for ADD Command
 		void search();		// for SEARCH Command
 		// TODO: contacts[] -> why i can't access to the contacts[MAX_CONTACTS] ???
