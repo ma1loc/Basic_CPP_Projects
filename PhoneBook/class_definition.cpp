@@ -65,26 +65,35 @@ void PhoneBook::search()
 		int 		contact_idx;
 
 		i = 0;
-		std::cout << "     index|first name| last name|  nickname" << std::endl;
-		while (i < counter) // >>> shows all the contacts is there
+		std::cout << std::setw(WIDE) << "index" << "|"
+        	<< std::setw(WIDE) << "first name" << "|"
+			<< std::setw(WIDE) << "last name" << "|"
+        	<< std::setw(WIDE) << "nickname" << std::endl;
+		while (i < counter)
 		{
-			std::cout << std::setw(10) << i << "|";
-			if (contacts[i].get_first_name().length() > WIDE)
-				std::cout << contacts[i].get_first_name().substr(0, 9) << '.' << "|";
-			else
-				std::cout << std::setw(10) << contacts[i].get_first_name() << "|";
+			std::cout << std::setw(WIDE) << i << "|";
 
+			// First name
 			if (contacts[i].get_first_name().length() > WIDE)
-				std::cout << contacts[i].get_last_name().substr(0, 9) << '.' << "|";
+				std::cout << contacts[i].get_first_name().substr(0, WIDE - 1) << '.' << "|";
 			else
-				std::cout << std::setw(10) << contacts[i].get_last_name() << "|";
+				std::cout << std::setw(WIDE) << contacts[i].get_first_name() << "|";
 
+			// Last name
+			if (contacts[i].get_last_name().length() > WIDE)
+				std::cout << contacts[i].get_last_name().substr(0, WIDE - 1) << '.' << "|";
+			else
+				std::cout << std::setw(WIDE) << contacts[i].get_last_name() << "|";
+
+			// Nickname
 			if (contacts[i].get_nickname().length() > WIDE)
-				std::cout << contacts[i].get_nickname().substr(0, 9) << '.' << std::endl;
+				std::cout << contacts[i].get_nickname().substr(0, WIDE - 1) << '.' << std::endl;
 			else
-				std::cout << std::setw(10) << contacts[i].get_nickname() << std::endl;
+				std::cout << std::setw(WIDE) << contacts[i].get_nickname() << std::endl;
+
 			i++;
 		}
+
 
 		// >>> shows spicefic contact with more info by index of it
 		std::cout << "> Inter contact index: ";
