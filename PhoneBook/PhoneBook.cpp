@@ -1,9 +1,33 @@
 # include "PhoneBook.hpp"
 
-// 2
+// 3
 // add ->  first name, last name, nickname, phone number, and
 // darkest secret. A saved contact can’t have empty fields.
 // next_index = (next_index + 1) % 8
+
+int	ft_atoi(std::string index)
+{
+	int		i;
+	int		sign;
+	long	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (index[i] && ((index[i] == ' ') || (index[i] >= 9 && index[i] <= 13)))
+		i++;
+	if (index[i] == '+' || index[i] == '-')
+		return (ERROR);
+	while (index[i] && index[i] >= '0' && index[i] <= '9')
+	{
+		result = result * 10 + (index[i] - '0');
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && -result < INT_MIN))
+			return (ERROR);
+		i++;
+	}
+	return (result * sign);
+}
 
 class Contact
 {
@@ -62,7 +86,6 @@ class PhoneBook	// >>> collection of info.
 		void	search();	// for SEARCH Command
 		// TODO: contacts[] -> why i can't access to the contacts[MAX_CONTACTS] ???
 	PhoneBook() {	// >>> this is the defult constractor to init the counter to 0
-		std::cout << "--------------> set the index to 0" << std::endl;	
 		counter = 0;
 		index = 0;
 	}
@@ -95,29 +118,38 @@ void PhoneBook::add_contact()
 	std::string phone_number;
 	std::string darkest_secret;
 
-    // std::cout << "----------------- ADD -----------------" << std::endl;
-	// std::cout << "index -> " << index << std::endl;
+	if (index > CONTACTS_LIMIT - 1)
+		index = index % CONTACTS_LIMIT;
 
 	std::cout << "first name: ";
-	std::cin >> first_name;
+	std::getline(std::cin, first_name);
+	if (first_name.empty())
+		return (std::cout << "error: first name is not optional to be empty" << std::endl, (void)0);
 	contacts[index].set_first_name(first_name);
 
 	std::cout << "last name: ";
-	std::cin >> last_name;
+	std::getline(std::cin, last_name);
+	if (last_name.empty())
+		return (std::cout << "error: last name is not optional to be empty" << std::endl, (void)0);
 	contacts[index].set_last_name(last_name);
 
 	std::cout << "nickname: ";
-	std::cin >> nickname;
+	std::getline(std::cin, nickname);
+	if (nickname.empty())
+		return (std::cout << "error: nickname is not optional to be empty" << std::endl, (void)0);
 	contacts[index].set_nickname(nickname);
+
 	
 	std::cout << "phone number: ";
-	std::cin >>  phone_number;
+	std::getline(std::cin, phone_number);
+	if (phone_number.empty())
+		return (std::cout << "error: phone number is not optional to be empty" << std::endl, (void)0);
 	if (is_digit(phone_number))
-		return (std::cout << "phone number is not valid" << std::endl, (void)0);
+		return (std::cout << "error: phone number most be `all` digits" << std::endl, (void)0);
 	contacts[index].set_phone_number(phone_number);
 	
 	std::cout << "darkest secret: ";
-	std::cin >> darkest_secret;
+	std::getline(std::cin, darkest_secret);
 	contacts[index].set_darkest_secret(darkest_secret);
 
 	counter++;
@@ -126,29 +158,29 @@ void PhoneBook::add_contact()
 
 void PhoneBook::search()
 {
-    // std::cout << "----------------- SEARCH -----------------" << std::endl;
-	
 	// >>> the counter in the phonebook is to know how many contacts is there
 	if (counter != 0)
 	{
-		int i;
-		
+		int 		i;
+		std::string in_index;
+		int			contact;
+
 		i = 0;
 		std::cout << "     index|first name| last name|  nickname" << std::endl;
-		while (i < index)	// >>> shows all the contacts is there
+		while (i < counter)	// >>> shows all the contacts is there
 		{
-			std::cout << std::setw(10) << index << "|";
-			if (contacts[i].get_first_name().length() > COLUMN_WIDE)
+			std::cout << std::setw(10) << i << "|";
+			if (contacts[i].get_first_name().length() > WIDE)
 				std::cout << contacts[i].get_first_name().substr(0, 9) << '.' << "|";
 			else
 				std::cout << std::setw(10) << contacts[i].get_first_name() << "|";
 			
-			if (contacts[i].get_first_name().length() > COLUMN_WIDE)
+			if (contacts[i].get_first_name().length() > WIDE)
 				std::cout << contacts[i].get_last_name().substr(0, 9) << '.' << "|";
 			else
 				std::cout << std::setw(10) << contacts[i].get_last_name() << "|";
 		
-			if (contacts[i].get_nickname().length() > COLUMN_WIDE)
+			if (contacts[i].get_nickname().length() > WIDE)
 				std::cout << contacts[i].get_nickname().substr(0, 9) << '.' << std::endl;
 			else
 				std::cout << std::setw(10) << contacts[i].get_nickname() << std::endl;
@@ -156,43 +188,31 @@ void PhoneBook::search()
 		}
 
 		// >>> shows spicefic contact with more info by index of it
+
 		std::cout << "> Inter contact index: ";
-		std::cin >> index;	// TODO: overflow to check
-		if (std::cin.fail() || index > INDEX_MAX || index < INDEX_MINI) {
-			// if (std::cin.fail()) {
-			std::cout << "-------------> inter <------------------------" << std::endl;
-			
-			// std::cin.clear();
-			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			
-			std::cin.clear();
-			std::cin.ignore();
-			// }
-			std::cout << "error: invalid index range" << std::endl;
-			return ;
-		} 
-		// else if (index > INDEX_MAX || index < INDEX_MINI)
-		else {
-			if (index <= counter - 1) {
-				std::cout << "- first name: " << contacts[index].get_first_name() << std::endl;
-				std::cout << "- last name: " << contacts[index].get_last_name() << std::endl;
-				std::cout << "- nickname: " << contacts[index].get_nickname() << std::endl;
-				std::cout << "- phone number: " << contacts[index].get_phone_number() << std::endl;
-				std::cout << "- darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
-			} else
-				std::cout << "NOTE: index your looking for is not exist or not set yet" << std::endl;
-		}
+		std::getline(std::cin, in_index);
+		if (in_index.empty())
+			return (std::cout << "NOTE: most provide an index to see more info." << std::endl, (void)0);
+		
+		if (is_digit(in_index))
+			return (std::cout << "error: index must be all digits." << std::endl, (void)0);
+		
+		contact = ft_atoi(in_index);
+		if (contact == ERROR || contact > INDEX_MAX || contact < INDEX_MINI)
+			return (std::cout << "error: invalid index out or range." << std::endl, (void)0);
+		
+		if (contact <= counter - 1) {
+			std::cout << "- first name: " << contacts[contact].get_first_name() << std::endl;
+			std::cout << "- last name: " << contacts[contact].get_last_name() << std::endl;
+			std::cout << "- nickname: " << contacts[contact].get_nickname() << std::endl;
+			std::cout << "- phone number: " << contacts[contact].get_phone_number() << std::endl;
+			std::cout << "- darkest secret: " << contacts[contact].get_darkest_secret() << std::endl;
+		} else
+			std::cout << "NOTE: index your looking for is not exist or not set yet." << std::endl;
 	}
 	else
-		std::cout << "NOTE: Phone book is empty for now" << std::endl;
+		std::cout << "NOTE: Phone book is empty for now." << std::endl;
 }
-
-// TODO: fix the index
-// TODO: fix the buffer input crash
-// TODO: fix the buffer overflow -> DONE
-// TODO: fix info input more them 10 char -> DONE
-// TODO: use the getline rather then std::cin
-
 
 int	main()
 {
@@ -202,12 +222,9 @@ int	main()
 	while (true)
 	{
 		std::cout << "> Inter the command: ";
-		std::cin >> command;
+		std::getline(std::cin, command);
 		if (command == "ADD")
-		{
-			// TODO: Replace the new one with the old one
 			contact_book.add_contact();
-		}
 		else if (command == "SEARCH")
 			contact_book.search();
 		else if (command == "EXIT")

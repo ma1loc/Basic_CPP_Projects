@@ -82,9 +82,10 @@ what's new in C++:
 	Function Overloading
 	Ma1loc -> new
 	free -> delete
-	std::String ->
-	cout / cin ->
-	>> / << ->
+	std::String -> ?
+	cout / cin -> ?
+	>> / << -> ?
+	getline(input stream, buffer)
 
 	class Myclass
 	{
