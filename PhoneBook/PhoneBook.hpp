@@ -1,7 +1,7 @@
 # ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# define CONTACTS_LIMIT 1
+# define CONTACTS_LIMIT 8
 # define WIDE 10
 # define INDEX_MAX 7
 # define INDEX_MINI 0
