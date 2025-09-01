@@ -117,3 +117,4 @@ to know about the C00
 	what is constractor && parametrise constractor?
 	instance variables?
 	static variables ?
+	extern ?

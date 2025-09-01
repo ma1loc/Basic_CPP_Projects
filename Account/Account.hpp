@@ -1,6 +1,6 @@
 // ************************************************************************** //
 //                                                                            //
-//                Account.hpp for GlobalBanksters United                //
+//                Account.hpp for GlobalBanksters United                      //
 //                Created on  : Thu Nov 20 19:43:15 1989                      //
 //                Last update : Wed Jan 04 14:54:06 1992                      //
 //                Made by : Brad "Buddy" McLane <bm@gbu.com>                  //
@@ -23,14 +23,14 @@ public:
 
 	typedef Account		t;
 
-	static int	getNbAccounts( void );
-	static int	getTotalAmount( void );
-	static int	getNbDeposits( void );
-	static int	getNbWithdrawals( void );
+	static int	getNbAccounts( void );			// done
+	static int	getTotalAmount( void );			// done
+	static int	getNbDeposits( void );			// done
+	static int	getNbWithdrawals( void ); 		// done
 	static void	displayAccountsInfos( void );
 
-	Account( int initial_deposit );
-	~Account( void );
+	Account( int initial_deposit );				// constaractor
+	~Account( void );							// deconstractor
 
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
@@ -47,12 +47,13 @@ private:
 	static int	_totalNbDeposits;
 	static int	_totalNbWithdrawals;
 
-	int				_accountIndex;
-	int				_amount;
-	int				_nbDeposits;
+	// used in the constractore
+	int				_accountIndex;	// for the index
+	int				_amount;		// the amount of the 
+	int				_nbDeposits;	// is that what the fucking total mony counter?
 	int				_nbWithdrawals;
 
-	Account( void );
+	Account( void );				// why calling the constractor here?
 
 };
 
