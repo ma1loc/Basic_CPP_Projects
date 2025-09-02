@@ -1,4 +1,4 @@
-// ************************************************************************** //
+	// ************************************************************************** //
 //                                                                            //
 //                tests.cpp for GlobalBanksters United                        //
 //                Created on  : Thu Nov 20 23:45:02 1989                      //
@@ -18,16 +18,14 @@ int		main( void ) {
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
-	// amount
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
 	accounts_t				accounts( amounts, amounts + amounts_size );
 	accounts_t::iterator	acc_begin	= accounts.begin();
 	accounts_t::iterator	acc_end		= accounts.end();
 
-	// deposite
-	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };	// array
-	size_t const		d_size( sizeof(d) / sizeof(int) );	// to know how many digits in the arry
+	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };
+	size_t const		d_size( sizeof(d) / sizeof(int) );
 	ints_t				deposits( d, d + d_size );
 	ints_t::iterator	dep_begin	= deposits.begin();
 	ints_t::iterator	dep_end		= deposits.end();
@@ -38,7 +36,6 @@ int		main( void ) {
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
-	// amount
 	Account::displayAccountsInfos();
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 

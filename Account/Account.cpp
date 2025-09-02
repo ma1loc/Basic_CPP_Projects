@@ -1,15 +1,14 @@
 #include "Account.hpp"
 # include <iostream>
 
-// 4
-// static and non-static in class
-// constractor and deconstractor
-// const member function
-// #pragma once: it prevents duplicate definitions.
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 void Account::_displayTimestamp(void)
 {
-    std::cout << "[19920104_091532] " << std::endl;
+    std::cout << "[19920104_091532] ";
 }
 
 int Account::getNbAccounts(void)
@@ -48,9 +47,10 @@ Account::Account(int initial_deposit)
 			<< "created" << std::endl;
 }
 
-void displayAccountsInfos()
+void Account::displayAccountsInfos()
 {
 	Account::_displayTimestamp();
+
 	std::cout << "accounts:" << Account::getNbAccounts() << ';'
 			<< "total:" << Account::getTotalAmount() << ';'
 			<< "deposits:" << Account::getNbDeposits() << ';'
@@ -58,12 +58,7 @@ void displayAccountsInfos()
 			<< std::endl;
 }
 
-// [19920104_091532] index:5; //
-// p_amount:0; //
-// deposit:23;
-// amount:23;
-// nb_deposits:1
-void	Account::makeDeposit(int deposit) // << in
+void	Account::makeDeposit(int deposit)
 {
 	int	p_amount;
 
@@ -73,20 +68,16 @@ void	Account::makeDeposit(int deposit) // << in
 	_totalAmount += deposit;
 	_totalNbDeposits++;
 
-	// is the p_amount = deposit
 	Account::_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ';'
 			<< "p_amount:" << p_amount << ';'
 			<< "deposit:" << deposit << ';'
 			<< "amount:" << _amount << ';'
-			<< "nb_deposits" << _nbDeposits
+			<< "nb_deposits:" << _nbDeposits
 			<< std::endl;
 }
 
-// [19920104_091532] index:4;p_amount:1321;withdrawal:76
-// amount:1245;nb_withdrawals:1
-// [19920104_091532] index:5;p_amount:23;withdrawal:refused
-bool	Account::makeWithdrawal(int withdrawal) // >> out
+bool	Account::makeWithdrawal(int withdrawal)
 {
 	Account::_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ';'
@@ -101,33 +92,31 @@ bool	Account::makeWithdrawal(int withdrawal) // >> out
 	_totalNbWithdrawals++;
 
 	std::cout << withdrawal << ';'
-			<< "amount:" << _amount
-			<< "nb_withdrawals" << _nbWithdrawals
+			<< "amount:" << _amount << ';'
+			<< "nb_withdrawals:" << _nbWithdrawals
 			<< std::endl;
 	
 	return (true);
 }
-int		Account::checkAmount( void ) const
+int		Account::checkAmount(void) const
 {
 	return (_amount);
 }
 
-void	Account::displayStatus( void ) const
+void	Account::displayStatus(void) const
 {
-	// working on it
+	Account::_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ';'
+			<< "amount:" << _amount << ';'
+			<< "deposits:" << _nbDeposits << ';'
+			<< "withdrawals:" << _nbWithdrawals
+			<< std::endl;
 }
 
 Account::~Account()
 {
 	Account::_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ';'
-	<< "amount:" << _amount << ';'
-	<< "closed" << std::endl;
-}
-
-// 42 + 54 + 957 + 432 1234 + 0 + 754 + 16576
-
-int main()
-{
-    // Account::_displayTimestamp();
+			<< "amount:" << _amount << ';'
+			<< "closed" << std::endl;
 }
