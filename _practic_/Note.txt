@@ -1,0 +1,57 @@
+5
+
+NeedtoKnow:
+    constractor
+    deconstractor
+    iterator
+    Abstraction
+    templates
+    instace(object)
+    container’s class
+    encapsulation
+    reference
+    this->
+
+about:
+    Standard Template Library (STL)
+    static and non-static in class
+    constractor and deconstractor
+    const member function
+    #pragma once: it prevents duplicate definitions.
+    is the constractor and deconstractor method in the class?
+    vector with typedef and without?
+
+about the main in account:
+{
+    - std::vector<int> numbers;
+    vector is a class and it's a continer that hold any arry of a fixed type of data
+    and is not index based arry access
+    and why we use the vector instad of the arry?
+        the vector is can be resize rather then the arry it can not.
+    vector same as arry but have a dynamic re-size using like "push_back()"
+    container’s class has a ::iterator that can give you the access to the continer object member
+
+    - vector methods:
+        .at(index)
+        .push_back(input)
+        summary: vector -> dynamic arry
+    - templates:
+        everything that takes parameters inside < > is part of a template
+        and the inside < > called template argument
+
+    - reference:
+        void addApple(const Apple& a);
+        If you do const Apple a:
+            The function creates a new Apple object (copy) from the one you pass.
+            That means memory and time are used to duplicate the object.
+            The original object outside the function stays unchanged.
+        If you do const Apple &a:
+            The function does not create a new object.
+            It just uses a reference (alias) to the existing object you already have.
+            No copying, faster, and still safe because const prevents changes.
+}
+
+exercie to done:
+    implement apple with the class
+    implement the iterator with vector
+    implement iterator with digit loop
