@@ -6,11 +6,12 @@
 /*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:36:12 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/05 13:36:20 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/06 16:42:02 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phone_book.hpp"
+#include "main.hpp"
+
 
 int overflow_check(std::string index)
 {
@@ -46,24 +47,39 @@ int is_digit(std::string phone_number)
 	return (0);
 }
 
+bool	is_non_print(std::string input)
+{
+	int i;
+
+	i = 0;
+	while (input[i])
+	{
+	    if (!std::isprint(static_cast<unsigned char>(input[i])))
+		{
+	        std::cout << "NOTE: Non-printable is not valid as an input" << std::endl;
+			return (true);
+    	}
+		i++;
+	}
+	return (false);
+}
+
 std::string	input(std::string output, bool info)
 {
 	std::string	input;
 
 	std::cout << output << ": ";
-	if (!std::getline(std::cin, input))
+	std::getline(std::cin, input);
+	if (std::cin.eof())
 	{
-		if (std::cin.eof())
-		{
-			std::cout << "\nEOF" << std::endl;
-			exit(0);
-		}
-		std::cout << "\nInput stream fail" << std::endl;
-		exit(1);
+		std::cout << "\nEOF" << std::endl;
+		exit(0);
 	}
 	if (info && input.empty())
-		std::cout << "error: " 
-				<< output << " is not optional to be empty"
-				<< std::endl;
+	std::cout << "error: " 
+			<< output << " is not optional to be empty"
+			<< std::endl;
+	if (is_non_print(input))
+		input = "";
 	return (input);
 }
