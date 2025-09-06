@@ -1,6 +1,6 @@
 # include <iostream>
 #include <vector>
-#include "Account_copy.hpp"
+// #include "Account_copy.hpp"
 # include <utility>
 
 //  ----------------- about the apple ------------------- //
@@ -63,7 +63,7 @@ void    AppleBasket::showAllApples()
 
 int    AppleBasket::countRipeApples()
 {
-
+    // std::isprint();
     int counter;
 
     counter = 0;
@@ -90,11 +90,17 @@ int main()
     AppleBasket apples;
 
     Apple apple1("red", 10, false);
-    Apple apple2("red", 20, false);
-    Apple apple3("red", 30, false);
+    Apple apple2("grean", 20, true);
+    Apple apple3("yellow", 30, false);
+    Apple apple4("orange", 30, true);
 
     apples.addApple(apple1);
     apples.addApple(apple2);
     apples.addApple(apple3);
-    
+    apples.addApple(apple4);
+
+
+    apples.showAllApples();
+
+    std::cout << "apples that ripe is: " << apples.countRipeApples();
 }

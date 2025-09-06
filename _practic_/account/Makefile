@@ -1,8 +1,8 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
-NAME = all_in_one
-SRC = ./all_in_one.cpp
+NAME = account
+SRC = ./tests_copy.cpp ./Account_copy.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
