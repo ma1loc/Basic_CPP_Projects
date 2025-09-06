@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phone_book.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 13:36:31 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/05 13:36:36 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
@@ -7,7 +19,7 @@
 # define INDEX_MINI 0
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
-# define ERROR 404
+# define ERROR -1
 
 # include <iostream>
 # include <cstdlib>
@@ -17,12 +29,12 @@
 # include <string>
 # include <sstream>
 
-int	is_digit(std::string str);
-int	ft_atoi(std::string index);
+int			is_digit(std::string str);
+int			overflow_check(std::string index);
+std::string	input(std::string output, bool info);
 
 class Contact
 {
-	// >>> attributes
 	private:
 		std::string first_name;
 		std::string last_name;
@@ -31,7 +43,6 @@ class Contact
 		std::string darkest_secret;
 
 	public:
-		// >>> methods
 		std::string get_first_name() {
 			return (first_name);
 		}
@@ -65,7 +76,7 @@ class Contact
 		}
 };
 
-class PhoneBook // >>> collection of info.
+class PhoneBook
 {
 	private:
 		Contact contacts[CONTACTS_LIMIT];
@@ -73,11 +84,10 @@ class PhoneBook // >>> collection of info.
 		int index;
 
 	public:
-		void add_contact(); // for ADD Command
-		void search();		// for SEARCH Command
-		// TODO: contacts[] -> why i can't access to the contacts[MAX_CONTACTS] ???
+		void set_contact();
+		void get_contact();
 	PhoneBook()
-	{ // >>> this is the defult constractor to init the counter to 0
+	{
 		counter = 0;
 		index = 0;
 	}

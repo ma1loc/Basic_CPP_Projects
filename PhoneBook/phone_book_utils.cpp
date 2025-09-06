@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phone_book_utils.cpp                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 13:36:12 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/05 13:36:20 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phone_book.hpp"
 
-int ft_atoi(std::string index)
+int overflow_check(std::string index)
 {
 	int i;
 	int sign;
@@ -9,11 +21,7 @@ int ft_atoi(std::string index)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (index[i] && ((index[i] == ' ') || (index[i] >= 9 && index[i] <= 13)))
-		i++;
-	if (index[i] == '+' || index[i] == '-')
-		return (ERROR);
-	while (index[i] && index[i] >= '0' && index[i] <= '9')
+	while (index[i])
 	{
 		result = result * 10 + (index[i] - '0');
 		if ((sign == 1 && result > INT_MAX) || (sign == -1 && -result < INT_MIN))
@@ -30,10 +38,32 @@ int is_digit(std::string phone_number)
 	i = 0;
 	while (phone_number[i])
 	{
-		if (isdigit(phone_number[i]))
+		if (std::isdigit(phone_number[i]))
 			i++;
 		else
 			return (1);
 	}
 	return (0);
+}
+
+std::string	input(std::string output, bool info)
+{
+	std::string	input;
+
+	std::cout << output << ": ";
+	if (!std::getline(std::cin, input))
+	{
+		if (std::cin.eof())
+		{
+			std::cout << "\nEOF" << std::endl;
+			exit(0);
+		}
+		std::cout << "\nInput stream fail" << std::endl;
+		exit(1);
+	}
+	if (info && input.empty())
+		std::cout << "error: " 
+				<< output << " is not optional to be empty"
+				<< std::endl;
+	return (input);
 }

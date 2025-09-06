@@ -1,10 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   class_definition.cpp                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 13:36:21 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/05 13:43:15 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phone_book.hpp"
 
-// >>> is not a global function
-//		way to define the methode outside the class
-//		set first the class name to define is not a global function
-//		define methode outside the class be like "PhoneBook::add_contact()"
-void PhoneBook::add_contact()
+void PhoneBook::set_contact()
 {
 	std::string first_name;
 	std::string last_name;
@@ -12,34 +20,29 @@ void PhoneBook::add_contact()
 	std::string phone_number;
 	std::string darkest_secret;
 
-	std::cout << "first name: ";
-	std::getline(std::cin, first_name);
+	first_name = input("first name", true);
 	if (first_name.empty())
-		return (std::cout << "error: first name is not optional to be empty" << std::endl, (void)0);
+		return ;
 
-	std::cout << "last name: ";
-	std::getline(std::cin, last_name);
+	last_name = input("last name", true);
 	if (last_name.empty())
-		return (std::cout << "error: last name is not optional to be empty" << std::endl, (void)0);
+		return ;
 
-	std::cout << "nickname: ";
-	std::getline(std::cin, nickname);
+	nickname = input("nickname", true);
 	if (nickname.empty())
-		return (std::cout << "error: nickname is not optional to be empty" << std::endl, (void)0);
+		return ;
 
-	std::cout << "phone number: ";
-	std::getline(std::cin, phone_number);
+	phone_number = input("phone number", true);
 	if (phone_number.empty())
-		return (std::cout << "error: phone number is not optional to be empty" << std::endl, (void)0);
+		return ;
 	if (is_digit(phone_number))
-		return (std::cout << "error: phone number most be `all` digits" << std::endl, (void)0);
+		return (std::cout << "error: phone number"\
+			" most be `all` digits" << std::endl, (void)0);
 
-	std::cout << "darkest secret: ";
-	std::getline(std::cin, darkest_secret);
+	darkest_secret = input("darkest secret", true);
 	if (darkest_secret.empty())
-		return (std::cout << "error: darkest secret is not optional to be empty" << std::endl, (void)0);
+		return ;
 
-	// >>> setting the info contact
 	contacts[index].set_first_name(first_name);
 	contacts[index].set_last_name(last_name);
 	contacts[index].set_nickname(nickname);
@@ -51,9 +54,8 @@ void PhoneBook::add_contact()
 	index = (index + 1) % CONTACTS_LIMIT;
 }
 
-void PhoneBook::search()
+void PhoneBook::get_contact()
 {
-	// >>> the counter in the phonebook is to know how many contacts is there
 	if (counter != 0)
 	{
 		int			i;
@@ -86,23 +88,30 @@ void PhoneBook::search()
 		}
 
 
-		// >>> shows spicefic contact with more info by index of it
 		std::cout << "> Inter contact index: ";
 		std::getline(std::cin, in_index);
 		if (in_index.empty())
-			return (std::cout << "NOTE: most provide an index to see more info." << std::endl, (void)0);
+			return (std::cout << "NOTE: most provide"\
+				" an index to see more info." << std::endl, (void)0);
 
 		if (is_digit(in_index))
-			return (std::cout << "error: index must be all digits." << std::endl, (void)0);
+			return (std::cout << "error: index must"\
+				" be all digits." << std::endl, (void)0);
 
-		contact_idx = ft_atoi(in_index);
+		contact_idx = overflow_check(in_index);
 		if (contact_idx == ERROR || contact_idx < 0 || contact_idx >= counter)
-			return (std::cout << "error: invalid index out or range." << std::endl, (void)0);
-		std::cout << "- first name: " << contacts[contact_idx].get_first_name() << std::endl;
-		std::cout << "- last name: " << contacts[contact_idx].get_last_name() << std::endl;
-		std::cout << "- nickname: " << contacts[contact_idx].get_nickname() << std::endl;
-		std::cout << "- phone number: " << contacts[contact_idx].get_phone_number() << std::endl;
-		std::cout << "- darkest secret: " << contacts[contact_idx].get_darkest_secret() << std::endl;
+			return (std::cout << "error: invalid index"\
+				" out or range." << std::endl, (void)0);
+		std::cout << "- first name: " << 
+			contacts[contact_idx].get_first_name() << std::endl;
+		std::cout << "- last name: "
+			<< contacts[contact_idx].get_last_name() << std::endl;
+		std::cout << "- nickname: "
+			<< contacts[contact_idx].get_nickname() << std::endl;
+		std::cout << "- phone number: "
+			<< contacts[contact_idx].get_phone_number() << std::endl;
+		std::cout << "- darkest secret: "
+			<< contacts[contact_idx].get_darkest_secret() << std::endl;
 	}
 	else
 		std::cout << "NOTE: Phone book is empty for now." << std::endl;

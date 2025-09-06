@@ -1,22 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 13:36:53 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/05 13:37:54 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-
-void    set_upper_case(std::string arg)
-{
-    int i;
-
-    i = 0;
-    while (arg[i])
-    {
-        if (arg[i] >= 'a' && arg[i] <= 'z')
-            arg[i] -= 32;
-        i++;
-    }
-    std::cout << arg;
-}
 
 int main(int argc, char **argv)
 {
-    int i;
+    int     i;
+    int     j;
+    char    c;
 
     if (argc == 1)
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
@@ -25,11 +25,16 @@ int main(int argc, char **argv)
         i = 1;
         while (argv[i])
         {
-            set_upper_case(argv[i]);
+            j = 0;
+            while (argv[i][j])
+            {
+                c = std::toupper(argv[i][j]);
+                std::cout << c;
+                j++;
+            }
             i++;
         }
         std::cout << std::endl;
     }
-
     return (0);
 }

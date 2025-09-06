@@ -1,9 +1,16 @@
-#include "phone_book.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phone_book.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 13:36:23 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/05 13:36:26 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// 3
-// add ->  first name, last name, nickname, phone number, and
-// darkest secret. A saved contact can’t have empty fields.
-// next_index = (next_index + 1) % 8
+#include "phone_book.hpp"
 
 int main()
 {
@@ -12,12 +19,16 @@ int main()
 
 	while (true)
 	{
-		std::cout << "> Inter the command: ";
-		std::getline(std::cin, command);
-		if (command == "ADD")
-			contact_book.add_contact();
+		command = input("> Inter the command", false);
+		if (std::cin.eof())
+		{
+			std::cout << "\nEOF" << std::endl;
+			break;
+		}
+		else if (command == "ADD")
+			contact_book.set_contact();
 		else if (command == "SEARCH")
-			contact_book.search();
+			contact_book.get_contact();
 		else if (command == "EXIT")
 			break;
 	}

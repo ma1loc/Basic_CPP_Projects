@@ -6,6 +6,22 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+Account::Account(int initial_deposit)
+{
+    _accountIndex = _nbAccounts;
+    _amount = initial_deposit;
+    _nbDeposits = 0;
+    _nbWithdrawals = 0;
+
+    _nbAccounts++;
+    _totalAmount += _amount;
+
+    _displayTimestamp();
+	std::cout << "index:" << _accountIndex << ';'
+			<< "amount:" << _amount << ';'
+			<< "created" << std::endl;
+}
+
 void Account::_displayTimestamp(void)
 {
     std::cout << "[19920104_091532] ";
@@ -29,22 +45,6 @@ int Account::getNbDeposits(void)
 int Account::getNbWithdrawals(void)
 {
     return (Account::_totalNbWithdrawals);
-}
-
-Account::Account(int initial_deposit)
-{
-    _accountIndex = _nbAccounts;
-    _amount = initial_deposit;
-    _nbDeposits = 0;
-    _nbWithdrawals = 0;
-
-    _nbAccounts++;
-    _totalAmount += _amount;
-
-    _displayTimestamp();
-	std::cout << "index:" << _accountIndex << ';'
-			<< "amount:" << _amount << ';'
-			<< "created" << std::endl;
 }
 
 void Account::displayAccountsInfos()
