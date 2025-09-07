@@ -6,11 +6,13 @@
 /*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:36:21 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/06 16:19:33 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/07 09:57:58 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+# include "main.hpp"
+# include "Contact.hpp"
+# include "PhoneBook.hpp"
 
 std::string Contact::get_first_name() 
 {

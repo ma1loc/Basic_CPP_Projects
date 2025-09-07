@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/07 09:42:25 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/07 09:53:11 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include "main.hpp"
+# define CONTACTS_LIMIT 8
+# include "Contact.hpp"
 
 class PhoneBook
 {
-	private:
+	private:	
 		Contact contacts[CONTACTS_LIMIT];
 		int counter;
 		int index;
