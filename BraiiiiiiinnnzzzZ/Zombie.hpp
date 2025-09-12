@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 14:46:15 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/09 14:46:21 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/12 10:31:10 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class   Zombie
 {
     public:
         void announce( void );
-        Zombie();
         Zombie(std::string name);
         ~Zombie();
     private:
