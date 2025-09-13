@@ -2,7 +2,7 @@ CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
 NAME = Sed_is_for_losers
-SRC = ./main.cpp
+SRC = ./main.cpp ./file_handler.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
