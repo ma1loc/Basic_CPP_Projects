@@ -12,9 +12,9 @@
 
 # include "Weapon.hpp"
 
-Weapon::Weapon(std::string str)
+Weapon::Weapon(std::string type)
 {
-	this->type = str;
+	this->type = type;
 }
 
 const std::string &Weapon::getType() const

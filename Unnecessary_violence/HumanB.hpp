@@ -18,12 +18,12 @@
 class HumanB
 {
 	public:
-		HumanB(std::string str);	// done
-		void	attack();	// >>> done
+		HumanB(std::string str);
 		void	setWeapon(Weapon &weapon);
+		void	attack();
 	private:
-		std::string	name;		// >>> done
-		Weapon		*weapon;		// why weapon not &weapon?
+		std::string	name;
+		Weapon		*weapon;
 };
 
 # endif

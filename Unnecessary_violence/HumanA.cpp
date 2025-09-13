@@ -12,17 +12,8 @@
 
 # include "HumanA.hpp"
 
-// HumanA(std::string str, Weapon weapon);	// done
-
-// HumanA::HumanA(std::string name, Weapon &weapon)	// done
-// {
-// 	this->name = name;
-// 	this->weapon = weapon;
-// }
-
 HumanA::HumanA(std::string name, Weapon &weapon)
 : name(name), weapon(weapon) {}
-
 
 void HumanA::attack()
 {

@@ -1,7 +1,7 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
-NAME = test
+NAME = Unnecessary_violence
 SRC = ./main.cpp ./Weapon.cpp ./HumanA.cpp ./HumanB.cpp
 
 OBJ = $(SRC:.cpp=.o)

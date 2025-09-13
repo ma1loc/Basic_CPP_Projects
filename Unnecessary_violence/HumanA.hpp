@@ -18,12 +18,11 @@
 class HumanA
 {
 	public:
-		HumanA(std::string name, Weapon &weapon); // reference
+		HumanA(std::string name, Weapon &weapon);
 		void attack();
 	private:
 		std::string name;
-		Weapon &weapon;  // reference
+		Weapon &weapon;
 };
-
 
 # endif
