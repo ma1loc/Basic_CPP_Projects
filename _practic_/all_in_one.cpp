@@ -11,40 +11,40 @@
     methodes like: .push_back() method
 */
 
-void test_vectore()
-{
-    int arry1[] = {10, 20, 30, 40};
-    int arry2[] = {50, 60, 70, 80, 90};
+// void test_vectore()
+// {
+//     int arry1[] = {10, 20, 30, 40};
+//     int arry2[] = {50, 60, 70, 80, 90};
 
-    size_t amount1 = (sizeof(arry1) / sizeof(arry1[0]));
-    size_t amount2 = (sizeof(arry2) / sizeof(arry2[0]));
+//     size_t amount1 = (sizeof(arry1) / sizeof(arry1[0]));
+//     size_t amount2 = (sizeof(arry2) / sizeof(arry2[0]));
 
-    std::vector<int> number1(arry1, arry1 + amount1);;
-    std::vector<int> number2(arry2, arry2 + amount2);;
-    std::vector<int> number3(10, 111);
+//     std::vector<int> number1(arry1, arry1 + amount1);;
+//     std::vector<int> number2(arry2, arry2 + amount2);;
+//     std::vector<int> number3(10, 111);
 
-    // for (size_t i = 0; i < amount1; i++)
-    // std::cout << "number1.size()   " << number1.size() << std::endl;
-    for (size_t i = 0; i < number1.size(); i++)
-        std::cout << number1.at(i) << " ";
-    std::cout << "\n";
-    // for (size_t i = 0; i < amount2; i++)
-    for (size_t i = 0; i < number2.size(); i++)
-        std::cout << number2.at(i) << " ";
-    std::cout << "\n";
-    for (size_t i = 0; i < number3.size(); i++)
-        std::cout << number3.at(i) << " ";
-}
+//     // for (size_t i = 0; i < amount1; i++)
+//     // std::cout << "number1.size()   " << number1.size() << std::endl;
+//     for (size_t i = 0; i < number1.size(); i++)
+//         std::cout << number1.at(i) << " ";
+//     std::cout << "\n";
+//     // for (size_t i = 0; i < amount2; i++)
+//     for (size_t i = 0; i < number2.size(); i++)
+//         std::cout << number2.at(i) << " ";
+//     std::cout << "\n";
+//     for (size_t i = 0; i < number3.size(); i++)
+//         std::cout << number3.at(i) << " ";
+// }
 
 
-// ---------------------- pair --------------------- //
+// // ---------------------- pair --------------------- //
 
-// what is pair?
-/*
-   pair is a continer, template class are used to group two type of elements(template argumant)
-   with deffrent type in one and access them with .first method and .second to access
-   the second
-*/
+// // what is pair?
+// /*
+//    pair is a continer, template class are used to group two type of elements(template argumant)
+//    with deffrent type in one and access them with .first method and .second to access
+//    the second
+// */
 
 void    test_pair()
 {
@@ -58,15 +58,15 @@ void    test_pair()
         << " age: " << student.second << std::endl;
 }
 
-// ---------------------- iterator --------------------- //
+// // ---------------------- iterator --------------------- //
 
-// what is iterator?
-/*
-    iterator is a pointer or the position in a continers (like:vector)
-    syntax -> continer<type>::iterator it;
-    diff between iterator and pointer?
-    done a task with it
-*/
+// // what is iterator?
+// /*
+//     iterator is a pointer or the position in a continers (like:vector)
+//     syntax -> continer<type>::iterator it;
+//     diff between iterator and pointer?
+//     done a task with it
+// */
 
 void    test_iterator()
 {
@@ -96,7 +96,7 @@ void    test_iterator()
 
 }
 
-// ---------------------------------------------------------- //
+// // ---------------------------------------------------------- //
 
 class const_dest
 {
@@ -125,19 +125,55 @@ int    const_dest::get_i()
 }
 
 // ---------------------------------------------------------- //
+//                  about the refrance in class
 
-int const_dest::i = 0;
 
-int main()
+class name
 {
-    const_dest  ob;
+    public:
+        name();
+        std::string str_name;
+        void    set_name(std::string set_name);
+        std::string get_name();
+    private:
+        const std::string str;
+        // std::string &str;
+};
 
-    // test_vectore();
-    // test_pair();
-    // test_iterator();
-    std::cout << "i ----> " << ob.get_i() << std::endl; 
-
-    return (0);
+void name::set_name(std::string name)
+{
+    this->str_name = name;
 }
 
+std::string name::get_name()
+{
+    return (this->str);
+}
 
+name::name() : str(str_name) {};
+
+// int main() {
+//     name _name_;
+
+//     _name_.set_name("youness");
+//     std::cout << _name_.get_name() << std::endl;  // prints "youness"
+
+//     _name_.str_name = "another";
+//     std::cout << _name_.get_name() << std::endl;  // prints "another"
+// }
+
+
+// // ---------------------------------------------------------- //
+
+
+// int main()
+// {
+//     // const_dest  ob;
+//     // test_vectore();
+//     // test_pair();
+//     // test_iterator();
+//     // std::cout << "i ----> " << ob.get_i() << std::endl; 
+
+
+//     return (0);
+// }
