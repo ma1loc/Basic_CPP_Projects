@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/17 17:23:01 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/17 17:23:02 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "Fixed.hpp"
 
-std::ostream &operator<<(std::ostream &out, const Fixed &Fixed)
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
-    out << Fixed.toFloat();
+    out << fixed.toFloat();
     return (out);
 }
 
