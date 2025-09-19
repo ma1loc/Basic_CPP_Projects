@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/19 08:58:17 by yanflous          #+#    #+#             */
+/*   Updated: 2025/09/19 09:08:16 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "Fixed.hpp"
 
 const int Fixed::fractional_bit = 8;
@@ -14,14 +26,6 @@ Fixed::Fixed(const Fixed &copy)
 	fixed_point = copy.fixed_point;
 }
 
-Fixed &Fixed::operator=(const Fixed &copy)
-{
-    std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &copy)
-        this->fixed_point = copy.fixed_point; // copy the actual data
-    return *this;                  // return the left-hand object
-}
-
 int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
@@ -36,4 +40,12 @@ void Fixed::setRawBits(int const raw)
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
+}
+
+Fixed &Fixed::operator=(const Fixed &copy)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    if (this != &copy)
+        this->fixed_point = copy.fixed_point;
+    return (*this);
 }
