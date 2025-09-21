@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:23:07 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/21 11:12:26 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/21 13:38:34 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Fixed &Fixed::operator=(const Fixed &copy)
         this->fixed_point = copy.fixed_point;
     return *this;
 }
+
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
     out << fixed.toFloat();

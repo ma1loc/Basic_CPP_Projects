@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:23:01 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/18 17:28:46 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/22 10:06:08 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
+
+	Fixed aa(3.5f);
+	Fixed bb(2.25f);
+	std::cout << "aa / bb = " << (aa * bb) << std::endl;
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:23:04 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/18 17:29:33 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/22 09:39:25 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ class Fixed
 		Fixed operator*(const Fixed &copy) const;
 		Fixed operator/(const Fixed &copy) const;
 
+		// >>> pre inc
 		Fixed &operator++();
 		Fixed &operator--();
 
+		// >>> post inc
 		Fixed operator++(int);
 		Fixed operator--(int);
 

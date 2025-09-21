@@ -2,8 +2,7 @@ CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
 NAME = a.out
-SRC = main.cpp Fixed.cpp Member_fun_init.cpp
-
+SRC = main.cpp Fixed.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
