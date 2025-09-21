@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:23:04 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/17 17:23:05 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/21 11:12:31 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Fixed
 		Fixed(const float float_nbr);
 		float toFloat( void ) const;
 		int toInt( void ) const;
+
 		Fixed(const Fixed &copy);
 		Fixed &operator=(const Fixed &copy);
 		int getRawBits( void ) const;
@@ -34,5 +35,6 @@ class Fixed
 		~Fixed();
 };
 
-# endif
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
+# endif
