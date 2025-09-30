@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 14:34:32 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/29 17:16:27 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/30 08:47:18 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ClapTrap.hpp"
 
 class ScavTrap : virtual public ClapTrap
-{		
+{
 	public:
 		ScavTrap();
 		ScavTrap(const std::string &name);

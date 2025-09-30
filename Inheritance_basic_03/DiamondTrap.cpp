@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:53:45 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/29 18:17:35 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/30 11:08:25 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,18 @@ DiamondTrap::DiamondTrap(): ClapTrap("Default_clap_name"), FragTrap(), ScavTrap(
 	attack_damage = 30;
 }
 
+DiamondTrap::DiamondTrap(const std::string &n) : ClapTrap(n + "_clap_name"), FragTrap(n), ScavTrap(n)
+{
+    this->name = n;
+    hit_points = 100;
+    energy_points = 50;
+    attack_damage = 30;
+    std::cout << "DiamondTrap constructor called for " << this->name << std::endl;
+}
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
 {
     std::cout << "DiamondTrap copy constructor called" << std::endl;
-    *this = copy;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
@@ -37,16 +44,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
         ScavTrap::operator=(copy);
         this->name = copy.name;
     }
-    return *this;
-}
-DiamondTrap::DiamondTrap(const std::string &n)
-    : ClapTrap(n + "_clap_name"), FragTrap(n), ScavTrap(n)
-{
-    this->name = n;
-    hit_points = 100;
-    energy_points = 50;
-    attack_damage = 30;
-    std::cout << "DiamondTrap constructor called for " << this->name << std::endl;
+    return (*this);
 }
 
 DiamondTrap::~DiamondTrap()

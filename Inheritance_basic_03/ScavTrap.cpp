@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 14:34:36 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/29 18:16:52 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/30 10:20:43 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ ScavTrap::ScavTrap(const std::string &n)
 	std::cout << "ScavTrap " << name << " constructor called" << std::endl;
 }
 
-// in the constractor you most done the initalitiazation first 
-//	to unshort use the correct constractor
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
-	ClapTrap::operator=(copy);
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy)

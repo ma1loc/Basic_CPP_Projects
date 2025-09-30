@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:23:22 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/29 18:17:09 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/30 11:08:58 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ FragTrap::FragTrap(const std::string &n)
 FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy)
 {
 	std::cout << "FragTrap copy constructor called" << std::endl;
-	ClapTrap::operator=(copy);
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &copy)
