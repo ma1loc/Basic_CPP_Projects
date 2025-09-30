@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 14:34:36 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/29 16:24:06 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/30 13:08:37 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 ScavTrap::ScavTrap()
 {
 	std::cout << "ScavTrap Defult constructor called" << std::endl;
-	name = "Unknown";
+	name = "Default";
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(const std::string &name)
+ScavTrap::ScavTrap(const std::string &n)
 {
-	std::cout << "ScavTrap " << name << " constructor called" << std::endl;
-	this->name = name;
+	this->name = n;
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
+	std::cout << "ScavTrap constructor called for " << name
+			<< std::endl;
 }
 
 // in the constractor you most done the initalitiazation first 

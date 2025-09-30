@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 14:34:36 by yanflous          #+#    #+#             */
-/*   Updated: 2025/09/29 10:25:52 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/09/30 13:07:34 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 ScavTrap::ScavTrap()
 {
-	std::cout << "ScavTrap Constructor called" << std::endl;
-	name = "Unknown";
+	std::cout << "ScavTrap Default Constructor called" << std::endl;
+	name = "Default";
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(const std::string &name)
+ScavTrap::ScavTrap(const std::string &n)
 {
-	std::cout << "ScavTrap " << name << " Constructor called" << std::endl;
-	this->name = name;
+	this->name = n;
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
+	std::cout << "ScavTrap Constructor called for " << name
+			<< std::endl;
 }
 
 ScavTrap::~ScavTrap()
