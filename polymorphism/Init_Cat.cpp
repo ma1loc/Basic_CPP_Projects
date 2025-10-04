@@ -1,4 +1,5 @@
 # include "Cat.hpp"
+# include "WrongCat.hpp"
 
 Cat::Cat() : Animal("Cat")
 {
@@ -26,3 +27,16 @@ Cat::~Cat()
     std::cout << "Destructor called for Cat"
             << std::endl;
 }
+
+// >>> Meow
+void Cat::makeSound() const
+{
+	std::cout << "Meow"
+			<< std::endl;
+}
+
+// void WrongCat::makeSound()
+// {
+// 	std::cout << "WrongCat sound"
+// 			<< std::endl;
+// }

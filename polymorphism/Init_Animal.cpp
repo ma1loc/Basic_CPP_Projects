@@ -1,6 +1,7 @@
 # include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-Animal::Animal() : type ("Unknown")
+Animal::Animal()
 {
     std::cout << "Defualt constractor called for Animal"
             << std::endl;
@@ -42,3 +43,14 @@ const std::string &Animal::getType() const
 {
     return (type);
 }
+
+void	Animal::makeSound() const
+{
+	std::cout << "No Sound Set yet to unKnown Animal" << std::endl;
+}
+
+// void WrongAnimal::makeSound() const
+// {
+// 	std::cout << "WrongAnimal sound"
+// 			<< std::endl;
+// }

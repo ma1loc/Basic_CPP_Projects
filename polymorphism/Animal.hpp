@@ -3,7 +3,7 @@
 
 # include <iostream>
 
-class Animal
+class 	Animal
 {
     protected:
         std::string type;
@@ -11,13 +11,15 @@ class Animal
         Animal();
         Animal(const Animal &copy);
         Animal &operator=(const Animal &copy);
-        ~Animal();
+        // TODO: ~Animal() why not this, why we add the virtual function in the ~Animal too;
+   		virtual ~Animal();
         
         Animal(const std::string &_type_);
         void    setType(const std::string &_type_);
         const std::string &getType() const;
 
-        void makeSound() const; // is that the virtual function?
+		// TODO: this is the virtual function is done like
+        virtual void makeSound() const;
 };
 
 # endif
