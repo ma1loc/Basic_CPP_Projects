@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/05 18:28:43 by yanflous          #+#    #+#             */
+/*   Updated: 2025/10/06 16:26:15 by yanflous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# ifndef CAT_HPP
+# define CAT_HPP  
+
+# include "AAnimal.hpp"
+# include "Brain.hpp"
+
+class Cat: public AAnimal
+{
+	private:
+		Brain *attribute;
+    public:
+        Cat();
+        Cat(const Cat &copy);
+        Cat &operator=(const Cat &copy);
+        ~Cat();
+
+		void makeSound() const;
+};
+
+# endif
+
