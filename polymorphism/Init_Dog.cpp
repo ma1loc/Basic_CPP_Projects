@@ -12,7 +12,7 @@ Dog::Dog(const Dog &copy) : Animal::Animal(copy)
         << std::endl;
 }
 
-const Dog &Dog::operator=(const Dog &copy)
+Dog &Dog::operator=(const Dog &copy)
 {
     std::cout << "Dog assignment operator called"
             << std::endl;

@@ -13,7 +13,7 @@ Cat::Cat(const Cat &copy) : Animal(copy)
         << std::endl;
 }
 
-const Cat &Cat::operator=(const Cat &copy)
+Cat &Cat::operator=(const Cat &copy)
 {
     std::cout << "Cat assignment operator called"
             << std::endl;

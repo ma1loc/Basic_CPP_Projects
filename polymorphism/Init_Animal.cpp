@@ -48,9 +48,3 @@ void	Animal::makeSound() const
 {
 	std::cout << "No Sound Set yet to unKnown Animal" << std::endl;
 }
-
-// void WrongAnimal::makeSound() const
-// {
-// 	std::cout << "WrongAnimal sound"
-// 			<< std::endl;
-// }
