@@ -12,38 +12,20 @@
 
 # include "AAnimal.hpp"
 
-AAnimal::AAnimal()
-{
-    std::cout << "Default constractor called for AAnimal"
-            << std::endl;
-}
+AAnimal::AAnimal() {}
 
-AAnimal::AAnimal(const AAnimal &copy) : type (copy.type)
-{
-    std::cout << "AAnimal constractor assignment called"
-            << std::endl;
-}
+AAnimal::AAnimal(const AAnimal &copy) : type (copy.type) {}
 
 AAnimal &AAnimal::operator=(const AAnimal &copy)
 {
-    std::cout << "AAnimal assignment operator called"
-        << std::endl;
     if (this != &copy)
         this->type = copy.type;
     return (*this);
 }
 
-AAnimal::~AAnimal()
-{
-    std::cout << "Destructor called for AAnimal"
-            << std::endl;
-}
+AAnimal::~AAnimal() {}
 
-AAnimal::AAnimal(const std::string &_type_) : type (_type_)
-{
-    std::cout << "AAnimal Param Constractor Called"
-            << std::endl;
-}
+AAnimal::AAnimal(const std::string &_type_) : type (_type_) {}
 
 void    AAnimal::setType(const std::string &type)
 {

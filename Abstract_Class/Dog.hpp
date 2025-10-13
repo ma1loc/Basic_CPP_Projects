@@ -6,7 +6,7 @@
 /*   By: yanflous <yanflous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 18:28:41 by yanflous          #+#    #+#             */
-/*   Updated: 2025/10/06 16:09:34 by yanflous         ###   ########.fr       */
+/*   Updated: 2025/10/06 11:12:23 by yanflous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ class Dog: public AAnimal
 {
 	private:
 		Brain *attribute;
-    public:
-        Dog();
-        Dog(const Dog &copy);
-        Dog &operator=(const Dog &copy);
-        ~Dog();
-
+  public:
+    Dog();
+    Dog(const Dog &copy);
+    Dog &operator=(const Dog &copy);
+    ~Dog();
+    
 		void makeSound() const;
 };
 

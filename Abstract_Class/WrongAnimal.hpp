@@ -1,7 +1,7 @@
 #ifndef WRONGANIMAL_HPP
 #define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include <iostream>
 #include <string>
 
