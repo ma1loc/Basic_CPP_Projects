@@ -27,8 +27,6 @@ int main()
 	std::cout << "-----------------------------------------------"
 		<< std::endl;
 	
-	// here will based on the type of the pointer without the virtual word
-	//		and that is done in the compilation time.
 	WrongAnimal *Wrong_Animal = new WrongAnimal;
 	Wrong_Animal->makeSound();
 	
@@ -37,11 +35,6 @@ int main()
 
 	std::cout << "-----------------------------------------------"
 		<< std::endl;
-	
-	// an error of animal is not a WrongAnimal
-	// Animal *Wrong_Animal_is_a_Animal = new WrongAnimal;
-	// Wrong_Animal_is_a_Animal->makeSound();
-	
 
 	delete meta;
 	delete j;

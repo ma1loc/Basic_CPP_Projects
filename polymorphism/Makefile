@@ -1,7 +1,6 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
-# POLY = -fdump-class-hierarchy
 
 NAME = a.out
 SRC = main.cpp Init_Animal.cpp Init_Cat.cpp Init_Dog.cpp \
