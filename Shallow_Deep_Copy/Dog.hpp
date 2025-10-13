@@ -20,12 +20,12 @@ class Dog: public Animal
 {
 	private:
 		Brain *attribute;
-    public:
-        Dog();
-        Dog(const Dog &copy);
-        Dog &operator=(const Dog &copy);
-        ~Dog();
-
+  public:
+    Dog();
+    Dog(const Dog &copy);
+    Dog &operator=(const Dog &copy);
+    ~Dog();
+    
 		void makeSound() const;
 };
 

@@ -13,43 +13,26 @@
 # include "Dog.hpp"
 # include "Brain.hpp"
 
-Dog::Dog() : Animal("Dog")
-{
-    std::cout << "Defualt constractor called for Dog"
-            << std::endl;
-	
-	attribute = new Brain();
-}
+Dog::Dog() : Animal("Dog"), attribute(new Brain) {}
 
-Dog::Dog(const Dog &copy) : Animal::Animal(copy)
-{
-    std::cout << "Dog constractor assignment called"
-        << std::endl;
-
-	attribute = new Brain(*copy.attribute);
-}
+Dog::Dog(const Dog &copy) : Animal::Animal(copy), attribute(new Brain(*copy.attribute)) {}
 
 Dog &Dog::operator=(const Dog &copy)
 {
-    std::cout << "Dog assignment operator called"
-            << std::endl;
     if (this != &copy)
 	{
         Animal::operator=(copy);
 
-		delete attribute;
+		delete this->attribute;
 
-		attribute = new Brain(*copy.attribute);
+		this->attribute = new Brain(*copy.attribute);
 	}
     return (*this);
 }
 
 Dog::~Dog()
-{
-    std::cout << "Destructor called for Dog"
-            << std::endl;
-	
-	delete attribute;
+{	
+	delete this->attribute;
 }
 
 void	Dog::makeSound() const

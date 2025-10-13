@@ -21,9 +21,6 @@ int main()
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
-	// (void)i;
-	// (void)j;
-
 	Animal *Animal_arry[100];
 	
 	std::cout << "\n------------------- Brain -----------------------"
@@ -31,22 +28,28 @@ int main()
 
 	for (int i = 0; i < 100; i++)
 	{
-		if (i <= 50)
+		if (i < 50)
 			Animal_arry[i] = new Dog;
 		else
 			Animal_arry[i] = new Cat;
 	}
 
+	for (int i = 0; i < 100; i++)
+		Animal_arry[i]->makeSound();
+
 	std::cout << "\n----------- Testing Assignment Operator -----------" << std::endl;
-		Dog dog1;
-		Dog dog2;
-		dog2 = dog1;
+
+	Dog *Dog_copy = new Dog;
+
+	*Dog_copy = *(Dog *)Animal_arry[0];
+	Dog_copy->makeSound();
 
 	std::cout << "\n------------------ Deleting -------------------"
 			<< std::endl;
 
 	delete i;
 	delete j;
+	delete Dog_copy;
 	for (int i = 0; i < 100; i++)
 	{
 		if (Animal_arry[i])

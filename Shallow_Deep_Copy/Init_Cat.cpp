@@ -13,44 +13,26 @@
 # include "Cat.hpp"
 # include "Brain.hpp"
 
-Cat::Cat() : Animal("Cat")
-{
-    std::cout << "Defualt constractor called for Cat"
-            << std::endl;
-	
-	attribute = new Brain();
-}
+Cat::Cat() : Animal("Cat"), attribute(new Brain) {}
 
-Cat::Cat(const Cat &copy) : Animal(copy)
-{
-    std::cout << "Cat constractor assignment called"
-        << std::endl;
-
-	attribute = new Brain(*copy.attribute);
-}
+Cat::Cat(const Cat &copy) : Animal(copy), attribute(new Brain(*copy.attribute)) {}
 
 Cat &Cat::operator=(const Cat &copy)
 {
-	
-    std::cout << "Cat assignment operator called"
-            << std::endl;
     if (this != &copy)
 	{
         Animal::operator=(copy);
 
-		delete attribute;
+		delete this->attribute;
 
-		attribute = new Brain(*copy.attribute);
+		this->attribute = new Brain(*copy.attribute);
 	}
     return (*this);
 }
 
 Cat::~Cat()
 {
-    std::cout << "Destructor called for Cat"
-            << std::endl;
-
-	delete attribute;
+	delete this->attribute;
 }
 
 void Cat::makeSound() const

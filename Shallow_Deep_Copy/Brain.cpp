@@ -12,26 +12,16 @@
 
 # include "Brain.hpp"
 
-Brain::Brain()
-{
-	std::cout << "Defualt constractor called for Brain"
-			<< std::endl;
-}
+Brain::Brain() {}
 
 Brain::Brain(const Brain &copy)
 {
-	std::cout << "Copy Constractor called for Brain"
-			<< std::endl;
-
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = copy.ideas[i];
 }
 
 Brain	&Brain::operator=(const Brain &copy)
 {
-    std::cout << "Brain copy assignment called"
-			<< std::endl;
-
 	if (this != &copy)
 	{
 		for (int i = 0; i < 100; i++)
@@ -40,8 +30,4 @@ Brain	&Brain::operator=(const Brain &copy)
 	return (*this);
 }
 
-Brain::~Brain()
-{
-	std::cout << "Destractor is called for Brain"
-			<< std::endl;
-}
+Brain::~Brain() {}

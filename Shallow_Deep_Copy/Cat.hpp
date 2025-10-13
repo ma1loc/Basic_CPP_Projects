@@ -19,14 +19,14 @@
 class Cat: public Animal
 {
 	private:
-		Brain *attribute;
-    public:
-        Cat();
-        Cat(const Cat &copy);
-        Cat &operator=(const Cat &copy);
-        ~Cat();
-
-		void makeSound() const;
+    Brain *attribute;
+  public:
+    Cat();
+    Cat(const Cat &copy);
+    Cat &operator=(const Cat &copy);
+    ~Cat();
+    
+	  void makeSound() const;
 };
 
 # endif
