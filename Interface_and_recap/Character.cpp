@@ -51,7 +51,6 @@ Character::Character(const Character &copy): name(copy.name), Backup_idx(copy.Ba
 
 Character &Character::operator=(const Character &copy)
 {
-	std::cout << "operator calle from Character" << std::endl;
 	if (this != &copy)
 	{
 		this->name = copy.name;
@@ -99,7 +98,7 @@ std::string const &Character::getName() const
 void Character::equip(AMateria *m)
 {
 	if (!m)
-		return (std::cout << "Not valid AMateria" << std::endl, (void)0);
+		return ;
 	for (int i = 0; i < 4; i++)
 	{
 		if (!this->inventory[i])
