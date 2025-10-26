@@ -1,4 +1,5 @@
 # include "Bureaucrat.hpp"
+# include "Form.hpp"
 # include <iostream>
 
 # define LOW_GRADE 150
@@ -6,10 +7,10 @@
 
 Bureaucrat::Bureaucrat(): name("Bureaucrat"), grade(1)
 {
-	if (grade > LOW_GRADE)
-		throw (GradeTooLowException());
-	else if (grade < HIGH_GRADE)
+	if (grade < HIGH_GRADE)
 		throw (GradeTooHighException());
+	else if (grade > LOW_GRADE)
+		throw (GradeTooLowException());
 }
 
 Bureaucrat::Bureaucrat(const std::string &_name, const int &_grade): name(_name), grade(_grade)
@@ -29,7 +30,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat() {} // why the des vir too???
+Bureaucrat::~Bureaucrat() {}
 
 const std::string &Bureaucrat::getName() const
 {
@@ -43,36 +44,53 @@ const int &Bureaucrat::getGrade() const
 
 void Bureaucrat::incr_Bureaucrat()
 {
-	this->grade--;
-	if (this->grade > LOW_GRADE)
-		throw (GradeTooLowException());
-	else if (this->grade < HIGH_GRADE)
+	if (this->grade - 1 < HIGH_GRADE)
 		throw (GradeTooHighException());
+	this->grade--;
 }
 
 void Bureaucrat::decr_Bureaucrat()
 {
-	this->grade++;
-	if (this->grade > LOW_GRADE)
+	if (this->grade + 1 > LOW_GRADE)
 		throw (GradeTooLowException());
-	else if (this->grade < HIGH_GRADE)
-		throw (GradeTooHighException());
+	this->grade++;
 }
 
-std::ostream &operator<< (std::ostream &out,const Bureaucrat &B)
+std::ostream &operator<< (std::ostream &out,const Bureaucrat &b)
 {
-	out << B.getName()
+	out << b.getName()
       << ", bureaucrat grade "
-      << B.getGrade();
+      << b.getGrade();
   return (out);
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-  return ("Grade Too High");
+  return ("Bureaucrat Exception: Grade Too High");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-  return ("Grade Too Low");
+  return ("Bureaucrat Exception: Grade Too Low");
+}
+
+void Bureaucrat::signForm(const Form &f) const
+{
+  if (f.getIsSigned())
+  {
+    std::cout << this->getName()
+      << " signed "
+      << f.getName()
+      << std::endl;
+  }
+  else 
+  {
+    std::cout << f.getName()
+          << " couldn’t sign "
+          << this->getName()
+          << " because "
+          << f.getGradeSigne()
+          << " < " << this->getGrade()
+          << std::endl;
+  }
 }

@@ -12,9 +12,9 @@ class Bureaucrat
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat &operator=(const Bureaucrat &copy);
-    ~Bureaucrat();
+    	~Bureaucrat();
 
-    Bureaucrat(const std::string &_name, const int &_grade); // TODO;
+		Bureaucrat(const std::string &_name, const int &_grade);
 
 		const std::string &getName() const; 
 		const int &getGrade() const;
@@ -22,17 +22,17 @@ class Bureaucrat
 		void incr_Bureaucrat();
 		void decr_Bureaucrat();
 
-    class GradeTooHighException: public std::exception
-    {
-      public:
-        const char *what() const throw();
-    };
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
 
-    class GradeTooLowException: public std::exception
-    {
-      public:
-        const char *what() const throw();
-    };
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
 
 };
 

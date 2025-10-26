@@ -1,5 +1,4 @@
 # include "Bureaucrat.hpp"
-# include "Form.hpp"
 # include <iostream>
 
 # define LOW_GRADE 150
@@ -7,10 +6,10 @@
 
 Bureaucrat::Bureaucrat(): name("Bureaucrat"), grade(1)
 {
-	if (grade < HIGH_GRADE)
-		throw (GradeTooHighException());
-	else if (grade > LOW_GRADE)
+	if (grade > LOW_GRADE)
 		throw (GradeTooLowException());
+	else if (grade < HIGH_GRADE)
+		throw (GradeTooHighException());
 }
 
 Bureaucrat::Bureaucrat(const std::string &_name, const int &_grade): name(_name), grade(_grade)
@@ -30,7 +29,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat() {} // why the des vir too???
+Bureaucrat::~Bureaucrat() {}
 
 const std::string &Bureaucrat::getName() const
 {
@@ -44,53 +43,36 @@ const int &Bureaucrat::getGrade() const
 
 void Bureaucrat::incr_Bureaucrat()
 {
-	if (this->grade - 1 < HIGH_GRADE)
-		throw (GradeTooHighException());
 	this->grade--;
+	if (this->grade > LOW_GRADE)
+		throw (GradeTooLowException());
+	else if (this->grade < HIGH_GRADE)
+		throw (GradeTooHighException());
 }
 
 void Bureaucrat::decr_Bureaucrat()
 {
-	if (this->grade + 1 > LOW_GRADE)
-		throw (GradeTooLowException());
 	this->grade++;
+	if (this->grade > LOW_GRADE)
+		throw (GradeTooLowException());
+	else if (this->grade < HIGH_GRADE)
+		throw (GradeTooHighException());
 }
 
-std::ostream &operator<< (std::ostream &out,const Bureaucrat &b)
+std::ostream &operator<< (std::ostream &out,const Bureaucrat &B)
 {
-	out << b.getName()
-      << ", bureaucrat grade "
-      << b.getGrade();
-  return (out);
+	out << B.getName()
+    	<< ", bureaucrat grade "
+    	<< B.getGrade();
+	return (out);
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-  return ("Grade Too High -> From Bureaucrat");
+	return ("Bureaucrat Exception: Grade Too High");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-  return ("Grade Too Low -> From Bureaucrat");
-}
-
-void Bureaucrat::signForm(const Form &f) const
-{
-  if (f.getIsSigned())
-  {
-    std::cout << this->getName()
-      << " signed "
-      << f.getName()
-      << std::endl;
-  }
-  else 
-  {
-    std::cout << f.getName()
-          << " couldn’t sign "
-          << this->getName()
-          << " because "
-          << f.getGradeSigne()
-          << " < " << this->getGrade()
-          << std::endl;
-  }
+	return ("Bureaucrat Exception: Grade Too Low");
 }

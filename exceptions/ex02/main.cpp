@@ -3,8 +3,8 @@
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include <iostream>
-#include <cstdlib>
-#include <ctime>
+# include <cstdlib>
+# include <ctime>
 
 int main()
 {
@@ -58,6 +58,5 @@ int main()
     {
         std::cout << "Error: " << e.what() << std::endl;
     }
-
     return 0;
 }
