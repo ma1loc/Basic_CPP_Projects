@@ -6,7 +6,7 @@
 class RobotomyRequestForm: public AForm
 {
 	private:
-		const std::string &target;
+		const std::string target;
 	public:
 		RobotomyRequestForm();
 		RobotomyRequestForm(const std::string &_target);
@@ -21,7 +21,8 @@ class RobotomyRequestForm: public AForm
 		};
 
 		void execute(Bureaucrat const & executor) const;
-
 };
 
 # endif
+
+

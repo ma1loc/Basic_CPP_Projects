@@ -30,7 +30,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat() {} // why the des vir too???
+Bureaucrat::~Bureaucrat() {}
 
 const std::string &Bureaucrat::getName() const
 {
@@ -95,5 +95,18 @@ void Bureaucrat::signForm(const AForm &f) const
   }
 }
 
-// TODO set the member function
-// void  Bureaucrat::executeForm(AForm const &f);
+void  Bureaucrat::executeForm(AForm const &f)
+{
+	try
+	{
+		f.execute(*this);
+		std::cout << this->getName() << " executed " << f.getName()
+				<< std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->getName() << " couldn’t execute " 
+				<< f.getName() << " because "
+				<< e.what() << std::endl;
+	}
+}

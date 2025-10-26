@@ -4,7 +4,6 @@
 # include <string>
 # include <ostream>
 
-//class Bureaucrat;
 # include "Bureaucrat.hpp"
 
 class AForm

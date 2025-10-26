@@ -1,4 +1,6 @@
 # include "RobotomyRequestForm.hpp"
+# include <iostream>
+# include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm()
 	: AForm("RobotomyRequestForm", 72, 45), target("Robotomy") {}
@@ -6,7 +8,6 @@ RobotomyRequestForm::RobotomyRequestForm()
 RobotomyRequestForm::RobotomyRequestForm(const std::string &_target)
 	: AForm("RobotomyRequestForm", 72, 45), target(_target) {}
 
-// TODO; what we will call in the init list (AForm(copy)) assinment operator or copy constractor and why?
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)
 	: AForm(copy), target(copy.target) {}
 
@@ -14,7 +15,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &c
 {
 	if (this != &copy)
 	{
-		this->isSigned = copy.isSigned;
+		AForm::operator=(copy);
 	}
 	return (*this);
 }
@@ -32,5 +33,9 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw (GradeSignException());
 	if (executor.getGrade() > getGradeExecute())
 		throw (AForm::GradeTooLowException());
-	// what will done here ????
+	std::cout << "DRRR DBRR DBRRRRRRRRRRRRRRR..." << std::endl;
+	if (std::rand() % 2 == 0)
+		std::cout << "The robotomy failed." << std::endl;
+	else
+		std::cout << target << " has been robotomized successfully." << std::endl;
 }

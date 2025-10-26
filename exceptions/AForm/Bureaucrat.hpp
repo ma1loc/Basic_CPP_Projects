@@ -3,7 +3,6 @@
 
 # include <string>
 # include <ostream>
-//# include "Form.hpp"
 
 class AForm;
 
@@ -18,7 +17,7 @@ class Bureaucrat
 		Bureaucrat &operator=(const Bureaucrat &copy);
 		~Bureaucrat();
 
-		Bureaucrat(const std::string &_name, const int &_grade); // TODO;
+		Bureaucrat(const std::string &_name, const int &_grade);
 
 		const std::string &getName() const; 
 		const int &getGrade() const;

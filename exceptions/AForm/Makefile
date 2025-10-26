@@ -4,7 +4,8 @@ COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
 
 NAME = a.out
-SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+	RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -23,4 +24,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
