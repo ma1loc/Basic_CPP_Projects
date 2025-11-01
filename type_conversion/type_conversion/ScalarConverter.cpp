@@ -8,23 +8,6 @@
 #include <limits>
 #include <string>
 
-// why
-
-// The subject specifically says your casting choice will be reviewed during defense!
-
-// Understand the conversion behavior
-
-// Use static_cast appropriately
-// Be prepared to explain WHY you used it
-// Understand what each C++ cast does
-
-// understand WHY you're using static_cast, not just HOW to use it.
-
-// int largeInt = 16777217;  // Larger than float can represent exactly
-// float f = static_cast<float>(largeInt);
-// int back = static_cast<int>(f);
-// // back might not equal largeInt!
-
 enum InputType {
     CHAR_TYPE,
     INT_TYPE,
@@ -148,8 +131,8 @@ void ScalarConverter::convert_to_float(std::string &input)
         return;
     }
     
-    float value = static_cast<float>(std::atof(input.c_str()));
-    std::cout << "float: " << value << "f" << std::endl;
+    float value = std::atof(input.c_str());
+    std::cout << std::fixed << "float: " << value << "f" << std::endl;
 
 }
 
@@ -165,16 +148,7 @@ void ScalarConverter::convert_to_double(std::string &input)
     }
     
     double value = std::atof(input.c_str());
-    
-    if (value == static_cast<int>(value) && 
-        value <= INT_MAX && value >= INT_MIN)
-    {
-        std::cout << "double: " << value << ".0" << std::endl;
-    }
-    else
-    {
-        std::cout << "double: " << value << std::endl;
-    }
+    std::cout << std::fixed << "double: " << value << std::endl;
 }
 
 void ScalarConverter::convert(std::string &input)
