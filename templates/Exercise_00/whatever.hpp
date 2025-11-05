@@ -21,6 +21,8 @@
     // but one place holder it can not hold (int, float) an error will happen
 
 // why i most define and not just declare the templete in the headerfile?
+// is the template function called -> genirec funciton ?
+// why we use the templates in general?
 
 template <typename T>
 void swap(T &value_1, T &value_2)
