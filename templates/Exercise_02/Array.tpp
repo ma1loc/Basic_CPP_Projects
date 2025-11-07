@@ -1,5 +1,4 @@
 # include "Array.hpp"
-# define MAX_VAL 750
 # include <iostream>
 
 template <typename T>
@@ -11,7 +10,6 @@ Array<T>::Array(): array_size(1)
 template <typename T>
 Array<T>::Array(unsigned int n): array_size(n)
 {
-    std::cout << "param constractor -> " << array_size << std::endl;
     this->data = new T[array_size];
 }
 
@@ -25,17 +23,14 @@ Array<T>::Array(const Array<T> &copy)
 }
 
 template <typename T>
-T &Array<T>::operator=(const Array<T> &copy)
+Array<T> &Array<T>::operator=(const Array<T> &copy)
 {
-    std::cout << "enter operator=" << std::endl;
     if (this != &copy)
     {
-        std::cout << "inter this != &copy" << std::endl;
         if (this->data)
-        {
-            for (int i = 0; i < copy.array_size; i++)
-                delete this->data[i];
-        }
+            delete[] this->data;
+        this->data = new T[copy.array_size];
+        this->array_size = copy.array_size;
         for (int i = 0; i < this->array_size; i++)
             this->data[i] = copy.data[i];
     }
@@ -45,10 +40,11 @@ T &Array<T>::operator=(const Array<T> &copy)
 template <typename T>
 T &Array<T>::operator[](int index)
 {
-    if (index < 0 || index > MAX_VAL)
-        throw ("index provided is out of range");
-    return (this->data[index]);
+    if (index < 0 || index >= this->array_size)
+        throw std::out_of_range("index out of range");
+    return this->data[index];
 }
+
 
 template <typename T>
 Array<T>::~Array()
@@ -57,7 +53,7 @@ Array<T>::~Array()
 }
 
 template <typename T>
-T Array<T>::size()
+int Array<T>::size() const
 {
     return (this->array_size);
 }

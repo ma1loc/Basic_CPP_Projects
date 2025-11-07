@@ -1,9 +1,9 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
-CPP_FLAGS = -Wall -Wextra -Werror -fsanitize=address
+CPP_FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 NAME = a.out
-SRC = __main.cpp
+SRC = Array.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

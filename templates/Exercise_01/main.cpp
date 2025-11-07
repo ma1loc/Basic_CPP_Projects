@@ -15,7 +15,7 @@ void set_array(T1 &array, int len)
     for (int i = 0; i < len; i++)
     {
         array[i] = value;
-        value += 10;
+        value += 100;
     }
 }
 
