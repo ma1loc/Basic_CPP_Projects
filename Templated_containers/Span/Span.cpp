@@ -65,8 +65,33 @@ int Span::longestSpan() const
 {
     if (size <= 1)
         throw ("no span can be found");
-    
+
     std::vector<int> tmp = *this->span_data;
     std::sort(tmp.begin(), tmp.end());
     return (tmp.at(size - 1) - tmp.at(0));
 }
+
+void Span::addMultipleNumbers(int_it start, int_it end)
+{
+    int len;
+    int free_space;
+
+    len = end - start;
+    free_space = (capacity - size);
+    if (free_space < len)
+        throw ("there's no space free to add range of number you provide :(");
+    this->span_data->insert(span_data->begin() + this->size , start, end);
+    this->size += len;
+}
+
+// // just a test to remove it latter on
+// void Span::print_test()
+// {
+//     std::cout << "\n=============== print_test ===============" << std::endl;
+//     std::cout << "this->size -> " << this->size << std::endl;
+//     std::cout << "this->capacity -> " << this->capacity << std::endl;
+//     for (u_int i = 0; i < this->size; i++)
+//     {
+//         std::cout << this->span_data->at(i) << std::endl;
+//     }
+// }

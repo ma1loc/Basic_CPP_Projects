@@ -4,6 +4,7 @@
 # include <vector>
 # include <algorithm>
 
+typedef std::vector<int>::iterator int_it;
 
 class Span
 {
@@ -23,7 +24,9 @@ class Span
         int shortestSpan() const;
         int longestSpan() const;
 
-        
+        void print_test();
+
+        void addMultipleNumbers(int_it start, int_it end);
 };
 
 # endif
