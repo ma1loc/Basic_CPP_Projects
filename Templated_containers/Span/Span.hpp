@@ -20,11 +20,9 @@ class Span
         ~Span();
 
         void addNumber(int number);
-        
-        int shortestSpan() const;
-        int longestSpan() const;
 
-        void print_test();
+        u_int shortestSpan() const;
+        u_int longestSpan() const;
 
         void addMultipleNumbers(int_it start, int_it end);
 };

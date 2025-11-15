@@ -35,37 +35,43 @@ int main()
 
     std::cout << "\n============= call addMultipleNumbers =============" << std::endl;
     
-    int number_list[] = {11, 22, 33, 44, 55, 66, 77, 88, 9999};
-    std::vector<int> new_list(number_list, number_list + 9); // why here +9 is not include the "9999"
-    for (size_t i = 0; i < new_list.size(); i++)
-    {
-        std::cout << "new_list[" << i << "] -> " << new_list.at(i) << std::endl;
-    }
+    Span thread_span(12);
+    int number_list[] = {0, 11, 22, 33, 44, 55, 66, 77, 88, 1};
+    int sec_number_list[] = {999};
+    std::vector<int> new_list(number_list, number_list + 10);
+    std::vector<int> newone_list(sec_number_list, sec_number_list + 1);
+    
     try
     {
-        sp.addMultipleNumbers(new_list.begin(), new_list.end());
-        std::cout << "one_sp shortestSpan -> " << sp.shortestSpan() << std::endl;
-        std::cout << "one_sp longestSpan -> " << sp.longestSpan() << std::endl;
-        // std::cout << "len -> " << sp.span_data->size() << std::endl;
+        thread_span.addMultipleNumbers(new_list.begin(), new_list.end());
+        thread_span.addMultipleNumbers(newone_list.begin(), newone_list.end());
 
-        // sp.print_test();
+        std::cout << "one_sp shortestSpan -> " << thread_span.shortestSpan() << std::endl;
+        std::cout << "one_sp longestSpan -> " << thread_span.longestSpan() << std::endl;
     }
     catch (const char *e)
     {
         std::cout << "exception: " << e << std::endl;
     }
-
+    
+    std::cout << "\n============= test copy const && error's =============" << std::endl;
     try
     {
-        std::vector<int> lol(number_list, number_list + 9);
-        Span lo = Span(9);
-        lo.addMultipleNumbers(lol.begin(), lol.end());
+        Span copy_of_thread_span(thread_span);
+        std::cout << "copy_of_thread_span shortestSpan -> " << copy_of_thread_span.shortestSpan() << std::endl;
+        std::cout << "copy_of_thread_span longestSpan -> " << copy_of_thread_span.longestSpan() << std::endl;
+
+        copy_of_thread_span.addNumber(99999);
+
+        std::cout << "\nnew copy_of_thread_span shortestSpan -> " << copy_of_thread_span.shortestSpan() << std::endl;
+        std::cout << "new copy_of_thread_span longestSpan -> " << copy_of_thread_span.longestSpan() << std::endl;
+
+        copy_of_thread_span.addNumber(99999);
     }
     catch (const char *e)
     {
-        std::cout << "exceprthtrhtion: " << e << std::endl;
+        std::cout << "exception: " << e << std::endl;
     }
-    
 
     return 0;
 }

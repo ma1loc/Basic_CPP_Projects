@@ -1,6 +1,6 @@
 # include "Span.hpp"
 # include <iostream>
-# include <algorithm>
+# include <climits>
 
 # define DEFAULT_CAPACITY 10
 
@@ -29,7 +29,7 @@ Span &Span::operator=(const Span &copy)
     return (*this);
 }
 
-Span::~Span() {delete this->span_data;}
+Span::~Span() {delete this->span_data; }
 
 void Span::addNumber(int number)
 {
@@ -39,59 +39,41 @@ void Span::addNumber(int number)
     this->size++;
 }
 
-int Span::shortestSpan() const
-{
-    if (size <= 1)
-        throw ("no span can be found");
-    
-    std::vector<int> tmp = *this->span_data;
-    std::sort(tmp.begin(), tmp.end(), std::greater<int>());
-    
-    int shortestSpan = __INT_MAX__;
-    int diffrence;
-    
-    for (u_int i = 0; i < this->size; i++)
-    {
-        if ((i + 1) == size)
-            break;
-        diffrence = tmp.at(i) - tmp.at(i + 1);
-        if (shortestSpan > diffrence)
-            shortestSpan = diffrence;
-    }
-    return (shortestSpan);
-}
-
-int Span::longestSpan() const
-{
-    if (size <= 1)
-        throw ("no span can be found");
-
-    std::vector<int> tmp = *this->span_data;
-    std::sort(tmp.begin(), tmp.end());
-    return (tmp.at(size - 1) - tmp.at(0));
-}
-
 void Span::addMultipleNumbers(int_it start, int_it end)
 {
-    int len;
-    int free_space;
-
-    len = end - start;
-    free_space = (capacity - size);
-    if (free_space < len)
-        throw ("there's no space free to add range of number you provide :(");
-    this->span_data->insert(span_data->begin() + this->size , start, end);
+    u_int len = end - start;
+    u_int new_size = this->size + len;
+    if (new_size > capacity)
+        throw ("no space for range");
+    this->span_data->insert(span_data->begin() + size, start, end);
     this->size += len;
 }
 
-// // just a test to remove it latter on
-// void Span::print_test()
-// {
-//     std::cout << "\n=============== print_test ===============" << std::endl;
-//     std::cout << "this->size -> " << this->size << std::endl;
-//     std::cout << "this->capacity -> " << this->capacity << std::endl;
-//     for (u_int i = 0; i < this->size; i++)
-//     {
-//         std::cout << this->span_data->at(i) << std::endl;
-//     }
-// }
+u_int Span::shortestSpan() const
+{
+    if (size <= 1)
+        throw ("no span can be found");
+
+    std::vector<int> tmp(span_data->begin(), span_data->begin() + size);
+    std::sort(tmp.begin(), tmp.end());
+
+    u_int shortestSpan = UINT_MAX;
+    for (size_t i = 0; i < tmp.size() - 1; i++)
+    {
+        u_int diff = tmp[i+1] - tmp[i];
+        if (diff < shortestSpan)
+            shortestSpan = diff;
+    }
+    return shortestSpan;
+}
+
+u_int Span::longestSpan() const
+{
+    if (size <= 1)
+        throw ("no span can be found");
+
+    std::vector<int> tmp(span_data->begin(), span_data->begin() + size);
+    std::sort(tmp.begin(), tmp.end());
+
+    return tmp.back() - tmp.front();
+}
