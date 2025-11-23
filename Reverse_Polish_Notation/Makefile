@@ -1,6 +1,6 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
-CPP_FLAGS = -Wall -Wextra -Werror
+CPP_FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 NAME = RPN
 SRC = main.cpp RPN.cpp utils_func.cpp

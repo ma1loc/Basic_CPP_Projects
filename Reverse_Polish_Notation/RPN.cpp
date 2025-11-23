@@ -11,8 +11,11 @@ RPN &RPN::operator=(const RPN &copy) {(void)copy; return (*this);}
 
 RPN::~RPN() {}
 
-void RPN::input_parsing(std::string input)
+void RPN::input_parsing(std::string &input)
 {
+    if (input.empty())
+        throw ("Empty args proveded");
+
     std::string input_trim = trim(input);
     std::string::iterator it = input_trim.begin();
     std::string::iterator ite = input_trim.end();
@@ -25,70 +28,51 @@ void RPN::input_parsing(std::string input)
         else if (std::isdigit(*it) || isoperator(*it))
         {
             if ((it + 1 == ite) || std::isspace(*(it + 1)))
-                new_input.push_back(*it);
+                v_input.push_back(*it);
             else
                 throw ("Input provided not follow syntax req.");
         }
         else
             throw ("Input provided can done with it an operation.");
     }
+    if (v_input.size() == 2)
+        throw ("Opeation is not valid wiht provide input");
 }
 
-void RPN::set_stackA()
+void RPN::exec_operation(std::string argv)
 {
-    std::reverse(new_input.begin(), new_input.end());
+    input_parsing(argv);
+    if (v_input.empty())
+        throw ("Empty args provided");
+    
+    size_t i = 0;
+    while (i < v_input.size())
+    {
+        std::cout << "isdigit -> " << v_input.at(i) << std::endl;
+        if (isdigit(v_input.at(i)))
+            stackA.push(v_input.at(i) - '0');
+        else
+        {
+            if (stackA.size() <= 1)
+                throw ("invalid operation");
+            int left = stackA.top();
+            stackA.pop();
+            int right = stackA.top();
+            stackA.pop();
 
-    std::string::iterator it = new_input.begin();
-    std::string::iterator ite = new_input.end();
+            std::cout << "\tleft -> " << left << std::endl;
+            std::cout << "\tright -> " << right << std::endl;
+            std::cout << "\toper -> " << v_input.at(i) << std::endl;
 
-    for (; it != ite; it++)
-        stackA.push(*it);
+            stackA.push(operation_between_two(right, left, v_input.at(i)));
+        }
+        i++;
+    }
+    if (stackA.size() == 2)
+        throw ("Operation not valie");
 }
 
-void RPN::operation_exec()
+long RPN::get_stackA()
 {
-    int first_number = 0;
-    int second_number = 0;
-
-	while (stackA.size() > 0)
-	{
-		if (stackB.size() == 0 && stackA.size() >= 3)
-		{
-			first_number = (stackA.top() - '0');
-			stackA.pop();
-			second_number = (stackA.top() - '0');
-			stackA.pop();
-			std::cout << first_number << " " << stackA.top() << " " << second_number;
-			if (isoperator(stackA.top()))
-			{
-				stackB.push(operation_between_two(first_number, second_number, stackA.top()));
-				stackA.pop();
-				std::cout << " result -> " << stackB.top() << std::endl;
-			}
-			else
-				throw("Invalid operation arithmetic provided.");
-		}
-		else if (stackB.size() == 1 && stackA.size() >= 2)	// here i excepact that stackb have a element
-		{
-			first_number = (stackB.top());
-			stackB.pop();
-			second_number = (stackA.top() - '0');
-			stackA.pop();
-			std::cout << first_number << " " << stackA.top() << " " << second_number;
-			if (isoperator(stackA.top()))
-			{
-				stackB.push(operation_between_two(first_number, second_number, stackA.top()));
-				stackA.pop();
-				std::cout << " result -> " << stackB.top() << std::endl;
-			}
-		}
-		else
-			throw ("Invalid input provied");
-	}
-	
-}
-
-int	RPN::get_stackB()
-{
-	return (stackB.top());
+    return (stackA.top());
 }

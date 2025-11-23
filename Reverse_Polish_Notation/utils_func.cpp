@@ -39,5 +39,3 @@ int operation_between_two(int f_nbr, int s_nbr, char operation)
     }
     return (0);
 }
-
-//  ./RPN ->  "8 9 * 9 - 9 - 9 - 4 - 1 +"
