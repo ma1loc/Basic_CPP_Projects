@@ -2,9 +2,9 @@ CPP = c++
 COMPILE_FLAG = -std=c++98
 CPP_FLAGS = -Wall -Wextra -Werror
 
-NAME = a.out
-SRC = main.cpp Init_Cat.cpp Init_Dog.cpp \
-      WrongAnimal.cpp WrongCat.cpp ./Brain.cpp ./Init_AAnimal.cpp
+NAME = btc
+SRC = main.cpp BitcoinExchange.cpp BitcoinExchange_utils.cpp
+
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
