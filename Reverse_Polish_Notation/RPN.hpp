@@ -8,7 +8,7 @@
 class RPN
 {
     private:
-        std::vector<char> v_input;
+        std::string v_input;
         std::stack<int> stackA;
     public:
         RPN();
