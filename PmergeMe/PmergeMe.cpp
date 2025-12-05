@@ -1,55 +1,76 @@
 # include "PmergeMe.hpp"
-# include <iostream> // rm_me
 # include <sstream>
-# include <cstdlib>
+# include <iostream>
+# include <algorithm>
 
-PmergeMe::PmergeMe() {};
+std::string trim(const std::string &s)
+{
+    size_t start = s.find_first_not_of(" \t\n\r");
+    size_t end   = s.find_last_not_of(" \t\n\r");
+    if (start == std::string::npos)
+        return "";
+    return s.substr(start, end - start + 1);
+}
 
-PmergeMe::PmergeMe(const PmergeMe &copy) {(void)copy; };
+bool    there_is_duplicate(std::vector<int> temp_main)
+{
+    std::vector<int>::iterator it = temp_main.begin();
+    std::vector<int>::iterator ite = temp_main.end();
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &copy) {(void)copy; return (*this);};
+    std::sort(it, ite);
 
-PmergeMe::~PmergeMe() {};
+    for (; it != ite; it++)
+    {
+        if ((it + 1) != ite)
+        {
+            if (*it == *(it+1))
+                return (true);
+        }
+        else
+            break;
+    }
+    return (false);
+}
 
-void PmergeMe::collect_args(int argc, char *argv[])
+bool    is_valid_number(std::string token)
+{
+    int number = 0;
+    std::istringstream sst(token);
+    sst >> number;
+
+    if (sst.fail() || !sst.eof() || number < 0)
+        return (false);
+    return (true);
+}
+
+std::vector<int> parsing_input(int argc, char *argv[])
 {
     std::string token;
+    std::vector<int> temp_main;
 
     for (int i = 1; i < argc; i++)
     {
-        token = trim(argv[i]);
+        std::string token = trim(argv[i]).c_str();
         if (token.empty())
             throw std::runtime_error("Provided args is empty!!!");
         if (is_valid_number(token))
         {
             int nbr = std::atoi(token.c_str());
-            tokens.push_back(nbr);
+            temp_main.push_back(nbr);
         }
         else
             throw std::runtime_error("Provided args is not valid!!!");
     }
 
-    if (there_is_duplicate(tokens))
+    if (there_is_duplicate(temp_main))
         throw std::runtime_error("Provided args has duplicated numbers");
+    return (temp_main);
 }
 
-void PmergeMe::set_lists()
+void before_cout(std::vector<int> &input)
 {
-    iter it = tokens.begin();
-    iter ite = tokens.end();
-
-    for (; it != ite; it++)
-    {
-        deq_list.push_back(*it);
-        vec_list.push_back(*it);
-    }
-    this->size_of_elements = tokens.size();
-}
-
-void PmergeMe::print_list_before()
-{
-    iter it = tokens.begin();
-    iter ite = tokens.end();
+    std::vector<int>::iterator it = input.begin();
+    std::vector<int>::iterator ite = input.end();
 
     std::cout << "Before: ";
     for (; it != ite; it++)
@@ -60,14 +81,4 @@ void PmergeMe::print_list_before()
         else
             std::cout << "\n";
     }
-}
-
-void PmergeMe::sort_deq_list()
-{
-
-}
-
-void PmergeMe::sort_vec_list()
-{
-
 }

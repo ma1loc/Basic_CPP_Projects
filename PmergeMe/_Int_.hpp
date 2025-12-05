@@ -1,13 +1,7 @@
-# ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+# ifndef INT__HPP
+# define INT__HPP
 
-# include <deque>
-# include <vector>
-# include <string>
-# include <algorithm>
-
-
-class PmergeMe
+class _Int_
 {
     // 35 is sufficient depth for N up to 2^35. 
     // For production, a std::vector<int> would be safer but slower.
@@ -17,7 +11,7 @@ class PmergeMe
     public:
         static int Count;   // just counter of the operations
         int value;
-        PmergeMe (int val = 0): value(val) { c = 0; }
+        _Int_ (int val = 0): value(val) { c = 0; }
     
         // Logic to track permutations through recursion
         int pop() {
@@ -28,14 +22,10 @@ class PmergeMe
             indx[c] = i;
             c++;
         }
-        bool operator<(const PmergeMe &obj) const {
+        bool operator<(const _Int_ &obj) const {
             Count++;
             return value < obj.value;
         }
 };
-
-
-std::vector<int> parsing_input(int argc, char *argv[]);
-void before_cout(std::vector<int> &input);
 
 # endif

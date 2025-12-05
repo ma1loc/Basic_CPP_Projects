@@ -1,9 +1,9 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
-CPP_FLAGS = -Wall -Wextra -Werror
+CPP_FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 NAME = PmergeMe
-SRC = main.cpp PmergeMe.cpp PmergeMe_utils.cpp
+SRC = main.cpp PmergeMe.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
