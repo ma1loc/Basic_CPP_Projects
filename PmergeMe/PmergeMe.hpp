@@ -6,36 +6,31 @@
 # include <string>
 # include <algorithm>
 
-
 class PmergeMe
 {
-    // 35 is sufficient depth for N up to 2^35. 
-    // For production, a std::vector<int> would be safer but slower.
-    private:
-        int indx[64];   // use
-        int c;  // use
-    public:
-        static int Count;   // just counter of the operations
-        int value;
-        PmergeMe (int val = 0): value(val) { c = 0; }
-    
-        // Logic to track permutations through recursion
-        int pop() {
-            c--;
-            return indx[c];
-        }
-        void push(int i) {
-            indx[c] = i;
-            c++;
-        }
-        bool operator<(const PmergeMe &obj) const {
-            Count++;
-            return value < obj.value;
-        }
+	public:
+		class _Int_
+		{
+			private:
+				int index[64];
+				int pair_index;
+
+			public:
+				static int comparisons;
+				int value;
+
+				_Int_(int val);
+				void push(int i);
+				int pop();
+				bool operator<(const _Int_ &obj) const;
+		};
+		PmergeMe();
+		PmergeMe(const PmergeMe &copy);
+		PmergeMe &operator=(const PmergeMe &copy);
+		~PmergeMe();
 };
 
-
 std::vector<int> parsing_input(int argc, char *argv[]);
-void before_cout(std::vector<int> &input);
+void before_sort(std::vector<int> &input);
 
 # endif

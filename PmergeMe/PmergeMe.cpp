@@ -3,6 +3,35 @@
 # include <iostream>
 # include <algorithm>
 
+int PmergeMe::_Int_::comparisons = 0;
+
+PmergeMe::_Int_::_Int_(int val): value(val)
+{
+	pair_index = 0;
+}
+
+void PmergeMe::_Int_::push(int i)
+{
+	index[pair_index] = i;
+	pair_index++;
+}
+
+int PmergeMe::_Int_::pop() {
+	pair_index--;
+	return (index[pair_index]);
+}
+
+bool PmergeMe::_Int_::operator<(const _Int_ &obj) const
+{
+	comparisons++;
+	return (this->value < obj.value);
+}
+
+PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe &copy){(void)copy;}
+PmergeMe &PmergeMe::operator=(const PmergeMe &copy) {(void)copy; return (*this); }
+PmergeMe::~PmergeMe() {}
+
 std::string trim(const std::string &s)
 {
     size_t start = s.find_first_not_of(" \t\n\r");
@@ -67,7 +96,7 @@ std::vector<int> parsing_input(int argc, char *argv[])
     return (temp_main);
 }
 
-void before_cout(std::vector<int> &input)
+void before_sort(std::vector<int> &input)
 {
     std::vector<int>::iterator it = input.begin();
     std::vector<int>::iterator ite = input.end();

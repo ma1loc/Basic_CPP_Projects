@@ -1,6 +1,6 @@
 CPP = c++
 COMPILE_FLAG = -std=c++98
-CPP_FLAGS = -Wall -Wextra -Werror -fsanitize=address
+CPP_FLAGS = -Wall -Wextra -Werror
 
 NAME = PmergeMe
 SRC = main.cpp PmergeMe.cpp
